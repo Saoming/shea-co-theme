@@ -1,0 +1,43 @@
+{
+  "name": "tenup-theme",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run watch",
+    "watch": "10up-toolkit watch --port=8080 --hot",
+    "build": "10up-toolkit build",
+    "format-js": "10up-toolkit format-js",
+    "lint-js": "10up-toolkit lint-js",
+    "lint-style": "10up-toolkit lint-style",
+    "test": "10up-toolkit test-unit-jest",
+    "clean-dist": "rm -rf ./dist"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "@10up/stylelint-config": "^2.0.1",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.1",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "10up-toolkit": "^5.1.0",
+    "purgecss-with-wordpress": "^4.1.0",
+    "stylelint": "^14.10.0",
+    "tailwindcss": "^3.0.24"
+  },
+  "10up-toolkit": {
+    "entry": {
+      "admin": "./assets/js/admin/admin.js",
+      "editor-style-overrides": "./assets/js/admin/editor-style-overrides.js",
+      "frontend": "./assets/js/frontend/frontend.js",
+      "shared": "./assets/js/shared/shared.js",
+      "styleguide": "./assets/js/styleguide/styleguide.js",
+      "core-block-overrides": "./includes/core-block-overrides.js",
+      "example-block": "./includes/blocks/example-block/index.js"
+    }
+  },
+  "dependencies": {
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.8.0"
+  }
+}
