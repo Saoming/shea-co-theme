@@ -16,9 +16,4 @@
 	<body <?php body_class(); ?>>
 		<?php wp_body_open(); ?>
 
-		<a href="#main" class="skip-to-content-link visually-hidden-focusable"><?php echo esc_html_e( 'Skip to main content', 'tenup-theme' ); ?></a>
-
 		<main id="main" role="main" tabindex="-1">
-
-			<h1><?php bloginfo( 'name' ); ?></h1>
-

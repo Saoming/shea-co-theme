@@ -144,7 +144,7 @@ function blocks_categories( $categories ) {
 		array(
 			array(
 				'slug'  => 'tenup-theme-blocks',
-				'title' => __( 'Custom Blocks', 'tenup-theme' ),
+				'title' => __( 'Custom Blocks', 'shea-co-theme' ),
 			),
 		)
 	);
@@ -162,6 +162,6 @@ function register_block_pattern_categories() {
 	// Register a block pattern category
 	register_block_pattern_category(
 		'10up-theme',
-		[ 'label' => __( '10up Theme', 'tenup-theme' ) ]
+		[ 'label' => __( '10up Theme', 'shea-co-theme' ) ]
 	);
 }

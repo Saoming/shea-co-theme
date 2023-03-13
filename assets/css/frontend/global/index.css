@@ -1,1 +1,7 @@
+/* WordPress global classes */
 
+html,
+body {
+
+	@apply font-ibm;
+}

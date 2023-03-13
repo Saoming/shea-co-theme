@@ -1,2 +1,27 @@
+@import url("link.css");
 @import url("prefers-reduced-motion.css");
 @import url("wordpress.css");
+
+/* Register Fonts */
+
+@font-face {
+	font-display: swap;
+	font-family: "IBM Plex Sans", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	src:
+		local("IBMPlexSans  Regular"),
+		local("IBMPlexSans--Regular"),
+		url("../fonts/ibm-plex-sans/IBMPlexSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "IBM Plex Sans", sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	src:
+		local("IBMPlexSans  Bold"),
+		local("IBMPlexSans--Bold"),
+		url("../fonts/Moderat/IBMPlexSans-Bold.ttf") format("truetype");
+}

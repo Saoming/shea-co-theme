@@ -9,6 +9,9 @@ namespace TenUpTheme\Core;
 
 use TenUpTheme\Utility;
 use TenUpTheme\Blocks\RegisterBlocks;
+use TenUpTheme\Theme\AcfOptionsPage;
+use TenUpTheme\Theme\RegisterPostTypes;
+use TenUpTheme\Theme\RegisterTaxonomy;
 
 /**
  * Set up theme defaults and register supported WordPress features.
@@ -304,15 +307,29 @@ function embed_ct_css() {
 
 }
 
+/**
+ * Register Additional Functionality to support the theme
+ */
+
 Class Additional {
 
+	protected $post_types_register;
 	protected $register_blocks;
+	protected $acf_options_page;
+	protected $register_taxonomy;
 
-		/**
+
+
+	/**
 	 * Creates all the Classes
 	 */
 	public function __construct() {
+		$this->post_types_register        = new RegisterPostTypes();
 		$this->register_blocks            = new RegisterBlocks();
+		$this->acf_options_page           = new AcfOptionsPage();
+		$this->register_taxonomy          = new RegisterTaxonomy();
+
+
 	}
 
 	/**
@@ -321,7 +338,10 @@ Class Additional {
 	 * @return void
 	 */
 	public function init_hooks() {
+		$this->post_types_register->init_hooks();
 		$this->register_blocks->init_hooks();
+		$this->register_taxonomy->init_hooks();
+		$this->acf_options_page->init_hooks();
 	}
 
 }

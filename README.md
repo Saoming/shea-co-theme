@@ -1,4 +1,4 @@
-# 10up Theme - Tailwind Edition
+# Shea&Co Theme - Tailwind Edition
 
 ## Setting up Tailwind for your project
 Review the contents of [TAILWIND.md](./TAILWIND.md) for additional details on using Tailwind with the scaffold

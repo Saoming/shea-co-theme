@@ -6,6 +6,8 @@
  *
  * using :where to prevent the specificity increase of using :not
  */
+
 a:where(:not(.components-external-link)) {
 
+	@apply no-underline !important;
 }

@@ -12,7 +12,38 @@
       "duotone": [],
       "gradients": [],
       "link": false,
-      "palette": []
+      "palette": [
+        {
+          "name": "Dark",
+          "slug": "dark",
+          "color": "#000"
+        },
+        {
+          "name": "Main",
+          "slug": "main",
+          "color": "#4465C2",
+          "includeBlocks": true
+        },
+        {
+          "name": "Secondary",
+          "slug": "secondary",
+          "color": "#A8D39D",
+          "includeBlocks": true
+
+        },
+        {
+          "name": "Tertiary",
+          "slug": "tertiary",
+          "color": "#E9B182",
+          "includeBlocks": true
+        },
+        {
+          "name": "Shades",
+          "slug": "shades",
+          "color": "#F6F6F6",
+          "includeBlocks": true
+        }
+      ]
     },
     "custom": {
       "width": {

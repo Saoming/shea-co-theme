@@ -69,7 +69,9 @@ module.exports = {
 			gray: colors.gray,
 			white: colors.white,
 			black: colors.black,
-			main: colors.main
+		},
+		fontFamily: {
+			ibm: "'IBM Plex Sans', sans-serif"
 		},
 		extend: {
 			/* Extend the default theme */
