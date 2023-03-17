@@ -14,6 +14,8 @@ class RegisterTaxonomy {
 
 	/**
 	 * Initialized the WordPress Hooks
+	 *
+	 * @return void
 	 */
 	public function init_hooks() {
 		add_action( 'init', array( $this, 'register_transaction_taxonomy' ) );
@@ -21,11 +23,11 @@ class RegisterTaxonomy {
 
 	/**
 	 * Register the Resource content type taxonomy
+	 *
+	 * @return void
 	 */
 	public function register_transaction_taxonomy() {
-		/**
-     	* Transactions
-     	*/
+
 		register_taxonomy('transaction-investor', array('transaction'), array(
 			'labels'                => array(
 				'name'                       => __( 'Buyside Investors', 'sheacompany' ),
@@ -38,7 +40,10 @@ class RegisterTaxonomy {
 			'show_admin_column'     => true,
 			'show_in_rest' => true,
 			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array( 'slug' => '/transactions/transaction-investor', 'with_front' => false ),
+			'rewrite'               => array(
+				'slug' => '/transactions/transaction-investor',
+				'with_front' => false
+			),
 		));
     	register_taxonomy_for_object_type( 'transaction-investor', 'transaction' );
 
@@ -53,7 +58,10 @@ class RegisterTaxonomy {
 			'hierarchical'          => false,
 			'show_admin_column'     => true,
 			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array( 'slug' => '/transactions/transaction-sellside-investor', 'with_front' => false ),
+			'rewrite'               => array(
+				'slug' => '/transactions/transaction-sellside-investor',
+				'with_front' => false
+			),
 		));
 		register_taxonomy_for_object_type( 'transaction-sellside-investor', 'transaction' );
 
@@ -69,7 +77,10 @@ class RegisterTaxonomy {
 			'show_admin_column'     => true,
 			'show_in_rest' => true,
 			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array( 'slug' => '/transactions/transaction-type', 'with_front' => false ),
+			'rewrite'               => array(
+				'slug' => '/transactions/transaction-type',
+				'with_front' => false
+			),
 		));
 		register_taxonomy_for_object_type( 'transaction-type', 'transaction' );
 
@@ -85,7 +96,10 @@ class RegisterTaxonomy {
 			'show_admin_column'     => true,
 			'show_in_rest' => true,
 			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array( 'slug' => '/transactions/location', 'with_front' => false ),
+			'rewrite'               => array(
+				'slug' => '/transactions/location',
+				'with_front' => false
+			),
 		));
 		register_taxonomy_for_object_type( 'location', 'transaction' );
 
@@ -101,7 +115,10 @@ class RegisterTaxonomy {
 			'show_admin_column'     => true,
 			'show_in_rest' => true,
 			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array( 'slug' => '/transactions/sector', 'with_front' => false ),
+			'rewrite'               => array(
+				'slug' => '/transactions/sector',
+				'with_front' => false
+			),
 		));
 		register_taxonomy_for_object_type( 'sector', 'transaction' );
 
@@ -117,7 +134,10 @@ class RegisterTaxonomy {
 			'show_admin_column'     => true,
 			'show_in_rest' => true,
 			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array( 'slug' => '/transactions/subsector', 'with_front' => false ),
+			'rewrite'               => array(
+				'slug' => '/transactions/subsector',
+				'with_front' => false
+			),
 		));
 		register_taxonomy_for_object_type( 'subsector', 'transaction' );
 

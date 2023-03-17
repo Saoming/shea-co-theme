@@ -1,11 +1,11 @@
 {
-    "key": "group_640f248f7c3b8",
-    "title": "Options - Footer Settings",
+    "key": "group_5c17baeade16d",
+    "title": "Taxonomy - Category Fields",
     "fields": [
         {
-            "key": "field_640f248f64c45",
-            "label": "Brand",
-            "name": "brand",
+            "key": "field_5c17bb0d2760e",
+            "label": "Category Hero Image",
+            "name": "hero_image",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -16,7 +16,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "id",
+            "return_format": "url",
+            "preview_size": "thumbnail",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -24,15 +25,14 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
+            "mime_types": ""
         },
         {
-            "key": "field_6410d16880232",
-            "label": "Email Address",
-            "name": "email_address",
+            "key": "field_5c17bd5a3ef2e",
+            "label": "Category Hero Color",
+            "name": "hero_color",
             "aria-label": "",
-            "type": "link",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -41,15 +41,25 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "choices": {
+                "black": "Black",
+                "white": "White"
+            },
+            "default_value": "black",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "taxonomy",
                 "operator": "==",
-                "value": "acf-options-site-footer"
+                "value": "category"
             }
         ]
     ],
@@ -62,5 +72,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678903175
+    "modified": 1678819678
 }

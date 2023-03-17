@@ -49,5 +49,38 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 }
 
 // run the additonal core theme
-$core = new TenUpTheme\Core\Additional;
+$core = new TenUpTheme\Additional;
 $core->init_hooks();
+
+/**
+ * Rename default post label wp-admin
+ */
+
+ function shea_change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Insights';
+    $submenu['edit.php'][5][0] = 'Insights';
+    $submenu['edit.php'][10][0] = 'Add Insights';
+    $submenu['edit.php'][16][0] = 'Insights Tags';
+}
+function shea_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Insights';
+    $labels->singular_name = 'Insight';
+    $labels->add_new = 'Add Insight';
+    $labels->add_new_item = 'Add Insight';
+    $labels->edit_item = 'Edit Insight';
+    $labels->new_item = 'Insights';
+    $labels->view_item = 'View Insight';
+    $labels->search_items = 'Search Insights';
+    $labels->not_found = 'No Insights found';
+    $labels->not_found_in_trash = 'No Insights found in Trash';
+    $labels->all_items = 'All Insights';
+    $labels->menu_name = 'Insights';
+    $labels->name_admin_bar = 'Insights';
+}
+
+add_action( 'admin_menu', 'shea_change_post_label' );
+add_action( 'init', 'shea_change_post_object' );

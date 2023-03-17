@@ -24,8 +24,12 @@ if ( ! get_field( 'block_preview' ) ) {
 				<div class="max-w-4xl text-center">
 					<h1 class="text-[70px] leading-[91px] mb-8 text-white"><?php echo esc_attr($title); ?></h1>
 					<a
-					class="px-[52px] py-6 bg-white text-black"
-					href="<?php esc_url($button_link['url']); ?>"><?php echo esc_attr($button_link['title']); ?> </a>
+						class="px-[52px] py-6 bg-white text-black"
+						href="<?php esc_url($button_link['url']); ?>"
+						aria-label="Link to about page"
+					>
+						<?php echo esc_attr($button_link['title']); ?>
+					</a>
 				</div>
 
 	</section>

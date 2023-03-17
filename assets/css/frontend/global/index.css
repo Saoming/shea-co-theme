@@ -5,3 +5,8 @@ body {
 
 	@apply font-ibm;
 }
+
+a:focus {
+
+	@apply outline-main outline-offset-4 outline-8;
+}

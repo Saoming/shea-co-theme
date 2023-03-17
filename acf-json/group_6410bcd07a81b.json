@@ -1,11 +1,11 @@
 {
-    "key": "group_640f248f7c3b8",
-    "title": "Options - Footer Settings",
+    "key": "group_6410bcd07a81b",
+    "title": "Taxonomy - Sector Fields",
     "fields": [
         {
-            "key": "field_640f248f64c45",
-            "label": "Brand",
-            "name": "brand",
+            "key": "field_6410bcd1db4b9",
+            "label": "Sector Icon",
+            "name": "sector_icon",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "id",
+            "return_format": "array",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -28,11 +28,11 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6410d16880232",
-            "label": "Email Address",
-            "name": "email_address",
+            "key": "field_6410bd92db4ba",
+            "label": "Coverage Team",
+            "name": "coverage_team",
             "aria-label": "",
-            "type": "link",
+            "type": "relationship",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -41,15 +41,23 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "post_type": [
+                "people"
+            ],
+            "taxonomy": "",
+            "filters": "",
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": ""
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "taxonomy",
                 "operator": "==",
-                "value": "acf-options-site-footer"
+                "value": "sector"
             }
         ]
     ],
@@ -62,5 +70,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678903175
+    "modified": 1678819945
 }
