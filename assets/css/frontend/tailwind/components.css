@@ -19,14 +19,66 @@
 
 @layer components {
 
-	/*
-	.my-component-1 {
-	 	add component styles here...
+	/* Header Menu */
+
+	.header__menu,
+	.header__menu .sub-menu {
+
+		@apply flex flex-row;
 	}
 
-	.my-component-2 {
-	 	...
+	.header__menu .menu-item-text {
+
+		@apply text-lg leading-10 pl-[38px];
 	}
-	*/
+
+	.header__menu--white .menu-item-text {
+
+		@apply text-white;
+	}
+
+	.header__menu--black .menu-item-text {
+
+		@apply text-black;
+	}
+
+	/* Footer Menu */
+
+	.footer__menu .menu-item {
+
+		@apply max-w-[197px];
+	}
+
+	.footer__menu .menu-item-text {
+
+		@apply text-lg leading-10;
+	}
+
+	.footer__menu--two {
+
+		@apply mb-[25px];
+	}
+
+	#menu-item-145 .menu-item-text {
+
+		@apply leading-7;
+	}
+
+	/* Gravity Form CSS */
+
+	.form-footer .gfield_label .gfield_required {
+
+		@apply hidden;
+	}
+
+	.form-footer .gform_wrapper.gravity-theme .gform-body .gfield input {
+
+		@apply mb-[18px] bg-transparent border-b;
+	}
+
+	.form-footer .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
+
+		@apply px-10 py-5 text-white bg-main;
+	}
 
 }

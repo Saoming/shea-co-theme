@@ -84,3 +84,4 @@ function shea_change_post_object() {
 
 add_action( 'admin_menu', 'shea_change_post_label' );
 add_action( 'init', 'shea_change_post_object' );
+

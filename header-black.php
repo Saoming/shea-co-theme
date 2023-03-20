@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the header white mode.
+ * The template for displaying the header black mode.
  *
  * @package TenUpTheme
  */

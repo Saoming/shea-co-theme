@@ -18,7 +18,6 @@
 	<div class="max-w-fit mb-[46px]">
 		<a
 			href="<?php echo esc_html( site_url() );?>"
-			class=""
 			aria-label="Link to Home Page"
 		>
 			<?php echo wp_get_attachment_image( $args['footer_brand'], null, null, array( 'class' => 'footer__logo-img' ) ); ?>
@@ -27,7 +26,7 @@
 
 	<!-- Middle Row -->
 
-	<div class="flex flex-wrap w-full ">
+	<div class="flex flex-wrap w-full mb-9">
 
 		<div class="w-full lg:w-4/12">
 			<h3 class="text-3xl font-bold mb-[10px] leading-[60px]"> Offices </h3>
@@ -70,13 +69,27 @@
 
 				<div class="w-1/2">
 					<?php echo wp_kses_post( $args['menu_footer_two'] ); ?>
+					<div class="inline-block leading-10">
+						<a href="#" rel="no-follow noopener" aria-label="Link to our linkendin">
+							<img
+								src="<?php echo esc_url( TENUP_THEME_DIST_URL . 'images/social-icons/linkedin-icon.svg' ); ?>"
+								alt="Linkedin icon"
+							/>
+						</a>
+					</div>
 				</div>
 			</div>
 
 		</div>
 
 		<div class="w-4/12">
-
+			<div class="max-w-[302px]">
+				<h3 class="text-3xl font-bold mb-[10px]"> Stay Current </h3>
+				<span> Get our insights delivered directly to your inbox. </span>
+				<div class="pt-[26px] form-footer">
+					<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); ?>
+				</div>
+			</div>
 		</div>
 
 
@@ -84,6 +97,8 @@
 	</div>
 
 	<!-- Bottom Row -->
-
+	<div>
+		<span> ©<?php echo esc_attr( get_the_date("Y") ); ?> Shea & Co.  |  Site design by Thank You Design Co.</span>
+	</div>
 
 </footer>
