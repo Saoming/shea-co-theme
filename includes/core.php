@@ -244,6 +244,16 @@ function js_detection() {
 function script_loader_tag( $tag, $handle ) {
 	$script_execution = wp_scripts()->get_data( $handle, 'script_execution' );
 
+	// if handle alpinejs is exist
+	if (  $handle === 'alpinejs'  ) {
+
+		if (false === stripos($tag, 'defer')) {
+			$tag = str_replace('<script ', '<script defer ', $tag);
+		}
+
+		return $tag;
+	}
+
 	if ( ! $script_execution ) {
 		return $tag;
 	}
@@ -266,6 +276,15 @@ function script_loader_tag( $tag, $handle ) {
 
 	return $tag;
 }
+
+ function add_defer($tag, $handle) {
+   if($handle !== 'alpinejs') {
+	 return $tag;
+   }
+
+   return str_replace(' src=', ' defer src=', $tag);
+ }
+
 
 /**
  * Appends a link tag used to add a manifest.json to the head

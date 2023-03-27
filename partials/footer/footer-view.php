@@ -9,8 +9,8 @@
 ?>
 
 <footer
-	class="	w-full min-h-full bg-shades
-			lg:min-h-[686px] lg:px-[82px] lg:pt-[62px] lg:pb-[65px]
+	class="	w-full min-h-full bg-shades pt-[46px] pb-[67px] px-[38px]
+			lg:min-h-[686px] lg:px-[82px] lg:pt-[62px] lg:pb-[65px] text-center md:text-left
 		">
 
 	<!-- Top Row -->
@@ -26,7 +26,7 @@
 
 	<!-- Middle Row -->
 
-	<div class="flex flex-wrap w-full mb-9">
+	<div class="flex flex-col gap-[30px] lg:gap-0 flex-wrap w-full lg:flex-row mb-9 justify-center md:justify-start">
 
 		<div class="w-full lg:w-4/12">
 			<h3 class="text-3xl font-bold mb-[10px] leading-[60px]"> Offices </h3>
@@ -36,7 +36,7 @@
 				if ( isset( $args['location_repeaters'] ) && $args['location_repeaters'] ) {
 					foreach( $args['location_repeaters'] as $office_location ) {
 					?>
-						<li class="max-w-[302px] text-lg leading-[40px] mb-3">
+						<li class="lg:max-w-[302px] text-lg leading-[40px] mb-3">
 							<h4 class="font-bold text-main"><?php echo esc_attr( $office_location['name'] ); ?></h4>
 							<div class="leading-[28px]"> <?php echo esc_attr( $office_location['address'] ); ?></div>
 						</li>
@@ -63,11 +63,11 @@
 			<h3 class="text-3xl font-bold mb-[10px]"> Information </h3>
 
 			<div class="flex flex-wrap w-full">
-				<div class="w-1/2">
+				<div class="w-full md:w-1/2">
 					<?php echo wp_kses_post( $args['menu_footer_one'] ); ?>
 				</div>
 
-				<div class="w-1/2">
+				<div class="w-full md:w-1/2">
 					<?php echo wp_kses_post( $args['menu_footer_two'] ); ?>
 					<div class="inline-block leading-10">
 						<a href="#" rel="no-follow noopener" aria-label="Link to our linkendin">
@@ -82,8 +82,8 @@
 
 		</div>
 
-		<div class="w-4/12">
-			<div class="max-w-[302px]">
+		<div class="w-full md:w-4/12">
+			<div class="w-full md:max-w-[302px]">
 				<h3 class="text-3xl font-bold mb-[10px]"> Stay Current </h3>
 				<span> Get our insights delivered directly to your inbox. </span>
 				<div class="pt-[26px] form-footer">

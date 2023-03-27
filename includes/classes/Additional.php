@@ -13,6 +13,7 @@ use TenUpTheme\Theme\RegisterPostTypes;
 use TenUpTheme\Theme\RegisterTaxonomy;
 use TenUpTheme\Theme\AddSvgSupport;
 use TenUpTheme\Theme\MenuSettings;
+use TenUpTheme\Blocks\RegisterBlockCategory;
 
 /**
  * Register Additional Functionality to support the theme
@@ -21,12 +22,13 @@ use TenUpTheme\Theme\MenuSettings;
  Class Additional {
 
 	protected $post_types_register;
+	protected $register_block_categories;
 	protected $register_blocks;
 	protected $acf_options_page;
 	protected $register_taxonomy;
 	protected $add_svg_support;
 	protected $menu_settings;
-
+	protected $register;
 
 
 	/**
@@ -34,12 +36,12 @@ use TenUpTheme\Theme\MenuSettings;
 	 */
 	public function __construct() {
 		$this->post_types_register        = new RegisterPostTypes();
+		$this->register_block_categories  = new RegisterBlockCategory();
 		$this->register_blocks            = new RegisterBlocks();
 		$this->acf_options_page           = new AcfOptionsPage();
 		$this->register_taxonomy          = new RegisterTaxonomy();
 		$this->add_svg_support            = new AddSvgSupport();
 		$this->menu_settings			  = new MenuSettings();
-
 	}
 
 	/**
@@ -49,6 +51,7 @@ use TenUpTheme\Theme\MenuSettings;
 	 */
 	public function init_hooks() {
 		$this->post_types_register->init_hooks();
+		$this->register_block_categories->init_hooks();
 		$this->register_blocks->init_hooks();
 		$this->register_taxonomy->init_hooks();
 		$this->acf_options_page->init_hooks();

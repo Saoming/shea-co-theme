@@ -14,6 +14,11 @@ define( 'TENUP_THEME_DIST_URL', TENUP_THEME_TEMPLATE_URL . '/dist/' );
 define( 'TENUP_THEME_INC', TENUP_THEME_PATH . 'includes/' );
 define( 'TENUP_THEME_BLOCK_DIR', TENUP_THEME_INC . 'blocks/' );
 
+if ( ! defined( '_S_VERSION' ) ) {
+	// Replace the version number of the alpinejs / any 3rd part library on each release.
+	define( '_S_VERSION', '3.12.0' );
+}
+
 $is_local_env = in_array( wp_get_environment_type(), [ 'local', 'development' ], true );
 $is_local_url = strpos( home_url(), '.test' ) || strpos( home_url(), '.local' );
 $is_local     = $is_local_env || $is_local_url;
@@ -46,6 +51,17 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 	function wp_body_open() {
 		do_action( 'wp_body_open' );
 	}
+}
+
+// Alpine js support
+
+if( defined('ALPINEJS') ){
+
+	add_action( 'wp_enqueue_scripts', 'register_custom_script_alpine_js' );
+	function register_custom_script_alpine_js() {
+		wp_enqueue_script( 'alpinejs', '//unpkg.com/alpinejs', array(), _S_VERSION );
+	}
+
 }
 
 // run the additonal core theme

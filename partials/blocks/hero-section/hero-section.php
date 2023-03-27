@@ -10,11 +10,16 @@ if ( ! empty( $block['anchor'] ) ) {
 }
 
 $title 			= get_field('title');
-$button_link 	= get_field('button_link');
+$cta 					= get_field('button_link');
+if ($cta ){
+	$cta_link           = $cta['url'];
+	$cta_title          = $cta['title'];
+	$cta_target 	    = $cta['target'] ? $cta['target'] : '_self';
+}
 $hero_bg 		= get_field('hero_background');
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-[600px] max-h-full flex flex-col items-center justify-center"
+	<section 	class="w-full h-[431px] px-[45px]  lg:h-[600px] max-h-full flex flex-col items-center justify-center"
 				id="<?php echo esc_attr( $id ); ?>"
 				style="
 					background: url('<?php echo esc_url($hero_bg['url']) ?>');
@@ -22,14 +27,17 @@ if ( ! get_field( 'block_preview' ) ) {
 					background-size: cover;
 				">
 				<div class="max-w-4xl text-center">
-					<h1 class="text-[70px] leading-[91px] mb-8 text-white"><?php echo esc_attr($title); ?></h1>
-					<a
-						class="px-[52px] py-6 bg-white text-black no-underline"
-						href="<?php esc_url($button_link['url']); ?>"
-						aria-label="Link to about page"
-					>
-						<?php echo esc_attr($button_link['title']); ?>
-					</a>
+					<h1 class="text-white hero-leading"><?php echo esc_attr($title); ?></h1>
+					<?php if($cta): ?>
+						<a
+							class="text-black no-underline bg-white btn-long"
+							href="<?php echo esc_url($cta_link); ?>"
+							aria-label="Link to about page"
+							target="<?php echo esc_attr( $cta_target ); ?>"
+						>
+							<?php echo esc_html($cta_title); ?>
+						</a>
+					<?php endif; ?>
 				</div>
 
 	</section>
