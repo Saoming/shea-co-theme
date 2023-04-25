@@ -9,6 +9,7 @@ namespace TenUpTheme;
 
 use TenUpTheme\Blocks\RegisterBlocks;
 use TenUpTheme\Theme\AcfOptionsPage;
+use TenUpTheme\Theme\ResourceEnqueuer;
 use TenUpTheme\Theme\RegisterPostTypes;
 use TenUpTheme\Theme\RegisterTaxonomy;
 use TenUpTheme\Theme\AddSvgSupport;
@@ -23,6 +24,7 @@ use TenUpTheme\Blocks\RegisterBlockCategory;
 
 	protected $post_types_register;
 	protected $register_block_categories;
+	protected $resource_enqueuer;
 	protected $register_blocks;
 	protected $acf_options_page;
 	protected $register_taxonomy;
@@ -38,8 +40,9 @@ use TenUpTheme\Blocks\RegisterBlockCategory;
 		$this->post_types_register        = new RegisterPostTypes();
 		$this->register_block_categories  = new RegisterBlockCategory();
 		$this->register_blocks            = new RegisterBlocks();
-		$this->acf_options_page           = new AcfOptionsPage();
 		$this->register_taxonomy          = new RegisterTaxonomy();
+		$this->acf_options_page           = new AcfOptionsPage();
+		$this->resource_enqueuer          = new ResourceEnqueuer();
 		$this->add_svg_support            = new AddSvgSupport();
 		$this->menu_settings			  = new MenuSettings();
 	}
@@ -55,6 +58,7 @@ use TenUpTheme\Blocks\RegisterBlockCategory;
 		$this->register_blocks->init_hooks();
 		$this->register_taxonomy->init_hooks();
 		$this->acf_options_page->init_hooks();
+		$this->resource_enqueuer->init_hooks();
 		$this->add_svg_support->init_hooks();
 		$this->menu_settings->init_hooks();
 	}

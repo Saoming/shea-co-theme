@@ -38,6 +38,18 @@
           "includeBlocks": true
         },
         {
+          "name": "LightBlue",
+          "slug": "lightBlue",
+          "color": "#DEEAFA",
+          "includeBlocks": true
+        },
+        {
+          "name": "UnitedNationsBlue",
+          "slug": "unitedNationsBlue",
+          "color": "#5897E8",
+          "includeBlocks": true
+        },
+        {
           "name": "Shades",
           "slug": "shades",
           "color": "#F6F6F6",
@@ -47,8 +59,8 @@
     },
     "custom": {
       "width": {
-        "content": "800px",
-        "wide": "1000px"
+        "content": "1080px",
+        "wide": "1280px"
       }
     },
     "layout": {

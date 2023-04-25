@@ -29,24 +29,24 @@ if ( ! get_field( 'block_preview' ) ) {
 				<div class=" w-full mb-[37px] lg:mb-0 xl:max-w-[515px] text-center
 							 xl:text-left flex flex-col justify-center xl:justify-start items-center xl:items-start"
 					>
-					<span class="mb-1 text-lg font-bold leading-6 uppercase"><?php echo esc_attr($sub_title); ?></span>
-					<h2 class="text-2xl lg:text-[40px] leading-10 lg:leading-[60px] mt-0 mb-[25px] lg:mb-[47px] md:max-w-[419px]"><?php echo esc_attr($title); ?></h2>
+					<span class="mb-1 text-lg font-bold leading-6 uppercase"><?php echo esc_attr( $sub_title ); ?></span>
+					<h2 class="text-2xl lg:text-[40px] leading-10 lg:leading-[60px] mt-0 mb-[25px] lg:mb-[47px] md:max-w-[419px]"><?php echo esc_attr( $title ); ?></h2>
 
-					<?php if($cta): ?>
+					<?php if ( $cta ) : ?>
 						<a
 							class="text-black no-underline bg-white border border-black btn-long"
-							href="<?php echo esc_url($cta_link); ?>"
-							aria-label="Link to about page"
+							href="<?php echo esc_url( $cta_link ); ?>"
+							aria-label="Link to our team page"
 							target="<?php echo esc_attr( $cta_target ); ?>"
 						>
-							<?php echo esc_html($cta_title); ?>
+							<?php echo esc_html( $cta_title ); ?>
 						</a>
 					<?php endif; ?>
 
 				</div>
 
 				<div class="w-full xl:max-w-[735px]">
-					<?php if($team_image): ?>
+					<?php if ( $team_image ) : ?>
 						<div class="hidden lg:block">
 							<?php echo wp_get_attachment_image( $team_image, 'full', false, array( "class" => "img-responsive" ) ); ?>
 						</div>

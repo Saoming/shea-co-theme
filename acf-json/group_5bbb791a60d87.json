@@ -17,7 +17,6 @@
                 "id": ""
             },
             "return_format": "array",
-            "preview_size": "thumbnail",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -25,7 +24,8 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "preview_size": "thumbnail"
         },
         {
             "key": "field_5bbb794c5da0f",
@@ -41,8 +41,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "preview_size": "thumbnail",
+            "return_format": "id",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -50,7 +49,8 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "preview_size": "thumbnail"
         },
         {
             "key": "field_5bbb79365da0e",
@@ -189,12 +189,15 @@
             "post_type": [
                 "transaction"
             ],
+            "post_status": "",
             "taxonomy": "",
-            "filters": "",
-            "elements": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "object",
             "min": "",
             "max": "",
-            "return_format": "object"
+            "elements": ""
         },
         {
             "key": "field_5bf59c60a27c0",
@@ -267,14 +270,14 @@
                 "id": ""
             },
             "post_type": [
-                "shea_people"
+                "people"
             ],
             "taxonomy": "",
             "filters": "",
-            "elements": "",
+            "return_format": "object",
             "min": "",
             "max": 4,
-            "return_format": "object"
+            "elements": ""
         }
     ],
     "location": [
@@ -304,5 +307,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678820191
+    "modified": 1682162833
 }

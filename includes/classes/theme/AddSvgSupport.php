@@ -2,7 +2,7 @@
 /**
  * Adds svg support to the site
  *
- * @package stride-theme
+ * @package TenUpTheme
  */
 
 namespace TenUpTheme\Theme;

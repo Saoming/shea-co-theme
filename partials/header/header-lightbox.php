@@ -19,7 +19,7 @@
     x-transition:leave-start="opacity-100 scale-100"
     x-transition:leave-end="opacity-0 scale-90"
 	x-cloak
-	tabindex="-1" role="dialog" aria-labelledby="mobile-menu-title">
+	tabindex="-1" role="dialog" aria-labelledby="mobile-menu">
 
     <div class="absolute top-0 bottom-0 right-0 z-10 w-11/12 py-4 transition-all bg-white drop-shadow-2xl">
 		<div class="flex flex-row justify-between w-full px-5 border-b border-gray-400 border-inherit pb-[21px]">

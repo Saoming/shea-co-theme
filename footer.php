@@ -8,7 +8,6 @@
 ?>
 		</main>
 		<?php get_template_part( '/partials/footer/footer' ); ?>
-
 		<?php wp_footer(); ?>
 	</body>
 </html>

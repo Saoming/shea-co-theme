@@ -2,7 +2,7 @@
 /**
  * Registers Custom Taxonomies
  *
- * @package stride-theme
+ * @package TenUpTheme
  */
 
 namespace TenUpTheme\Theme;

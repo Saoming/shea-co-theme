@@ -5,7 +5,7 @@
  * @package TenUpTheme
  */
 
-get_header(); ?>
+get_header('black'); ?>
 
 	<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : the_post(); ?>

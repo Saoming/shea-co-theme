@@ -44,7 +44,7 @@ $args['menu_header_mobile'] = wp_nav_menu(
 );
 
 $args['header_brand_white']  = get_field( 'brand_white', 'option' );
-$args['header_brand_black']  = get_field( 'brand_black', 'option' );
+$args['header_brand_black']  = get_field( 'brand_dark', 'option' );
 $args['social_link']  		 = get_field( 'social_link', 'option' );
 $args['navigation_button']   = get_field( 'navigation_button', 'option' );
 

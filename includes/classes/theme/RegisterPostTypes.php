@@ -2,13 +2,13 @@
 /**
  * Register the custom post types
  *
- * @package stride-theme
+ * @package TenUpTheme
  */
 
 namespace TenUpTheme\Theme;
 
 /**
- * Registers Custom Post Types for the Stride Learning Theme
+ * Registers Custom Post Types for the Shea Theme
  */
 class RegisterPostTypes {
 
@@ -63,8 +63,8 @@ class RegisterPostTypes {
 			'description'         => __( 'Transactions representing more than $40Bn+ in value across the strategic acquirer and financial investor landscape, with clients in the U.S., Canada, Europe and Israel.', 'shea-co-theme' ),
 			'labels'              => $labels,
 			'supports'            => array(
+				'editor',
 				'thumbnail',
-	            'editor',
 	            'title',
 	            'page-attributes',
 	            'custom-fields',
@@ -134,7 +134,6 @@ class RegisterPostTypes {
 			'labels'              => $labels,
 			'supports'            => array(
 				'thumbnail',
-	            'editor',
 	            'title',
 	            'page-attributes',
 	            'custom-fields',
@@ -151,7 +150,7 @@ class RegisterPostTypes {
 			'can_export'          => true,
 			'has_archive'         => true,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 			'rewrite'			  => array(
 				'slug'			  => 'people',
