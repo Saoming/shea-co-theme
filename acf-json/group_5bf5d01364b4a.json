@@ -97,6 +97,52 @@
                     "parent_repeater": "field_5bf5d0dd16be3"
                 },
                 {
+                    "key": "field_644a2c35763c3",
+                    "label": "Quote Color",
+                    "name": "quote_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "parent_repeater": "field_5bf5d0dd16be3"
+                },
+                {
+                    "key": "field_644a2c68763c4",
+                    "label": "Quote Position",
+                    "name": "quote_position",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "left": "Left",
+                        "right": "Right"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_5bf5d0dd16be3"
+                },
+                {
                     "key": "field_5bf5d11816be5",
                     "label": "Transaction Quote Person",
                     "name": "transaction_quote_person",
@@ -227,5 +273,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678820259
+    "modified": 1682582703
 }

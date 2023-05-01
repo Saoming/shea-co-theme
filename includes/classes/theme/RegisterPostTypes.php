@@ -82,7 +82,7 @@ class RegisterPostTypes {
 			'can_export'          => true,
 			'has_archive'         => true,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 			'rewrite'   => array(
 				'slug'  => 'transaction',

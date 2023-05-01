@@ -162,6 +162,6 @@ function register_block_pattern_categories() {
 	// Register a block pattern category
 	register_block_pattern_category(
 		'10up-theme',
-		[ 'label' => __( '10up Theme', 'shea-co-theme' ) ]
+		[ 'label' => __( 'Shea Co Theme', 'shea-co-theme' ) ]
 	);
 }

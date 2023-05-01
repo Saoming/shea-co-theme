@@ -4,9 +4,12 @@ class TestimonialSlider {
 	}
 
 	splideSettings() {
-		// eslint-disable-next-line no-undef
-		const splide = new Splide('.splide');
-		splide.mount();
+		const elms = document.getElementsByClassName('splide');
+
+		for (let i = 0; i < elms.length; i++) {
+			// eslint-disable-next-line no-undef
+			new Splide(elms[i]).mount();
+		}
 	}
 
 	fireWhenReady(func) {

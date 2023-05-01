@@ -9,8 +9,6 @@
  */
 get_header("black");
 ?>
-
-<?php get_template_part( '/partials/archive/content' ); ?>
-
+	<?php get_template_part( '/partials/archive/content' ); ?>
 <?php get_footer(); ?>
 

@@ -84,7 +84,7 @@ $args['selected_insights'] 	= get_field('selected_insights');
 <?php if( isset( $args['selected_insights'] )  ): ?>
 <section class="flex flex-col justify-center items-center px-[14px] lg:px-[82px] py-[75px]">
 	<h2 class="text-[18px] leading-[24px] font-bold mb-[56px] text-center tracking-[0.15em]">GOVERNANCE, RISK & COMPLIANCE  INSIGHTS</h2>
-	<ul class="grid items-center justify-center lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-5 pb-[47px] mx-auto">
+	<ul class="grid items-center justify-center lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-5 pb-[47px] mx-auto m-0 pl-0">
 		<?php foreach( $args['selected_insights'] as $post ): //have to be a post query object ?>
 			<?php setup_postdata($post); ?>
 				<?php
@@ -94,7 +94,7 @@ $args['selected_insights'] 	= get_field('selected_insights');
 					$separator = ' ';
 					$output = '';
 				?>
-					<li class="w-full h-full list-none">
+					<li class="w-full h-full pl-0 m-0 list-none">
 						<a
 							class="w-full h-full flex flex-col justify-start items-center no-underline py-[41px] px-[34px] border border-gray-400 text-center hover:bg-shades hover:opacity-100 transition-colors"
 							href="<?php echo esc_url( get_permalink() ); ?>"
@@ -127,7 +127,7 @@ $args['selected_insights'] 	= get_field('selected_insights');
 
 	<a
 		href="/insights"
-		aria-label="Link to Team Page"
+		aria-label="Link to Insights Page"
 		class="text-black border-2 border-black btn"
 	>
 		View All Insights

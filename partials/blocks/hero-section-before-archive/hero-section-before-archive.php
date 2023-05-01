@@ -17,11 +17,7 @@ if ( ! get_field( 'block_preview' ) ) {
 	?>
 	<section 	class="w-full h-full px-[14px] lg:px-[82px] pt-[69px] pb-[14px] md:pb-[43px] flex flex-col items-center justify-center"
 				id="<?php echo esc_attr( $id ); ?>"
-				style="
-					background: url('<?php echo esc_url($hero_bg['url']) ?>');
-					background-repeat: no-repeat;
-					background-size: cover;
-				">
+				>
 					<h1
 						<?php if ( is_page('insights')) :?>
 							class="text-center text-main hero-leading mb-[30px] font-bold"

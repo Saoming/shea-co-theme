@@ -228,9 +228,15 @@
 
 	/* Single Post Archive */
 
-	.single-post-content ul {
+	.single-post-content ul,
+	.single-transaction-content ul {
 
 		@apply list-disc m-[revert] p-[revert];
+	}
+
+	.single-transaction-content ul li {
+
+		@apply mb-[39px] leading-[36px];
 	}
 
 	/* Single Person Archive */

@@ -59,7 +59,7 @@ if( defined('ALPINEJS') ){
 
 	add_action( 'wp_enqueue_scripts', 'register_custom_script_alpine_js' );
 	function register_custom_script_alpine_js() {
-		wp_enqueue_script( 'alpinejs', '//unpkg.com/alpinejs', array(), _S_VERSION );
+		wp_enqueue_script( 'alpinejs', '//unpkg.com/alpinejs', array('frontend'), _S_VERSION );
 	}
 
 }
