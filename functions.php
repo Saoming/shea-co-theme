@@ -59,7 +59,7 @@ if( defined('ALPINEJS') ){
 
 	add_action( 'wp_enqueue_scripts', 'register_custom_script_alpine_js' );
 	function register_custom_script_alpine_js() {
-		wp_enqueue_script( 'alpinejs', '//unpkg.com/alpinejs', array('frontend'), _S_VERSION );
+		wp_enqueue_script( 'alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.js', array(), _S_VERSION );
 	}
 
 }
@@ -101,3 +101,60 @@ function shea_change_post_object() {
 add_action( 'admin_menu', 'shea_change_post_label' );
 add_action( 'init', 'shea_change_post_object' );
 
+add_action('rest_api_init', function () {
+	register_rest_route('custom/v1', '/transactions/', [
+	  'methods' => 'GET',
+	  'callback' => 'get_transactions',
+	]);
+  });
+
+  function get_transactions($request) {
+
+	$paged = $request->get_param('page') ? $request->get_param('page') : 1;
+
+	$args = [
+	  'post_type' => 'transaction',
+	  'posts_per_page' => 50,
+	  'paged' => $paged,
+	  'tax_query' => [],
+	];
+
+	$taxonomies = [
+	  'transaction_type' => 'transaction-type',
+	  'location' => 'location',
+	  'sector' => 'sector',
+	  'subsector' => 'subsector',
+	];
+
+	foreach ($taxonomies as $param => $taxonomy) {
+	  if (!empty($request->get_param($param))) {
+		$args['tax_query'][] = [
+		  'taxonomy' => $taxonomy,
+		  'field' => 'slug',
+		  'terms' => explode(',', $request->get_param($param)),
+		];
+	  }
+	}
+
+	$query = new WP_Query($args);
+
+	if ($query->have_posts()) {
+	  $transactions = [];
+	  while ($query->have_posts()) {
+		$query->the_post();
+		$transactions[] = [
+		  'ID' 		=> get_the_ID(),
+		  'title' 	=> get_the_title(),
+		  'link'	=> get_permalink(),
+		  'year'	=> get_the_date('Y'),
+		  'content' => get_the_content(),
+		  'acf'     => get_fields(),
+		];
+	  }
+	  wp_reset_postdata();
+
+	  return new WP_REST_Response($transactions, 200);
+	} else {
+	  return new WP_Error('no_transactions', 'No transactions found', ['status' => 404]);
+	}
+  }

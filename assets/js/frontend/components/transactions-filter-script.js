@@ -9,33 +9,28 @@ class TransactionsFilter {
 	}
 
 	async getJSON() {
-		const response = await fetch(
-			`${this.uri}/wp-json/wp/v2/transaction?per_page=18&acf_format=standard`,
-		);
+		const response = await fetch(`${this.uri}/wp-json/custom/v1/transactions`);
 
 		if (!response.ok) {
 			const message = `An error has occured: ${response.status}`;
 			throw new Error(message);
 		}
 
-		// get the total pages
 		this.totalTransaction = await response.headers['X-WP-Total'];
 
 		const transaction = await response.json().then((data) => {
 			this.isLoading = false;
 			this.transaction = data;
+			return data;
 		});
 
 		return transaction;
 	}
 
-	alpineSetting(func) {
-		return document.addEventListener('alpine:init', func);
-	}
-
-	init() {
-		this.promise = this.getJSON();
-		// eslint-disable-next-line prettier/prettier
+	async init() {
+		const newTransactions = await this.getJSON();
+		// eslint-disable-next-line no-undef
+		Alpine.store('test').transactions = newTransactions;
 	}
 }
 

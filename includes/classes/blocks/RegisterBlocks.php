@@ -448,6 +448,7 @@ class RegisterBlocks {
 				'render_template' => 'partials/blocks/transactions-filter-section/transactions-filter-section.php',
 				'mode'     => 'auto',
 				'category' => 'shea',
+				'enqueue_assets'  => ResourceEnqueuer::enqueue_transactions_filter_script(),
 				'supports' => array( 'anchor' => true ),
 				'example'  => array(
 					'attributes' => array(

@@ -34,10 +34,12 @@
       "shared": "./assets/js/shared/shared.js",
       "styleguide": "./assets/js/styleguide/styleguide.js",
       "core-block-overrides": "./includes/core-block-overrides.js",
-      "example-block": "./includes/blocks/example-block/index.js"
+      "example-block": "./includes/blocks/example-block/index.js",
+      "transactions-filter-script": "./assets/js/frontend/transactions-filter.js"
     }
   },
   "dependencies": {
+    "alpinejs": "^3.12.0",
     "postcss-import": "^14.1.0",
     "postcss-preset-env": "^7.8.0"
   }

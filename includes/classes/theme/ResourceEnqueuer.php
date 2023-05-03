@@ -61,6 +61,20 @@ class ResourceEnqueuer {
 	}
 
 	/**
+	 * Enqueues the Transaction Filter script
+	 */
+	public static function enqueue_transactions_filter_script() {
+		wp_enqueue_script(
+			'transactions-filter-script-defer',
+			TENUP_THEME_DIST_URL . '/js/transactions-filter-script.js',
+			array(),
+			filemtime( TENUP_THEME_DIST_PATH . '/js/transactions-filter-script.js' ),
+			false
+		);
+	}
+
+
+	/**
 	 * Registers the Splide Assets
 	 */
 	public static function register_splide_assets() {

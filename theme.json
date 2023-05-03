@@ -54,6 +54,12 @@
           "slug": "shades",
           "color": "#F6F6F6",
           "includeBlocks": true
+        },
+        {
+          "name": "Dark Gray",
+          "slug": "darkGray",
+          "color": "#767676",
+          "includeBlocks": true
         }
       ]
     },
