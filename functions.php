@@ -59,7 +59,7 @@ if( defined('ALPINEJS') ){
 
 	add_action( 'wp_enqueue_scripts', 'register_custom_script_alpine_js' );
 	function register_custom_script_alpine_js() {
-		wp_enqueue_script( 'alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.js', array(), _S_VERSION );
+		wp_enqueue_script( 'alpinejs', '//unpkg.com/alpinejs', array(), _S_VERSION );
 	}
 
 }
@@ -114,13 +114,13 @@ add_action('rest_api_init', function () {
 
 	$args = [
 	  'post_type' => 'transaction',
-	  'posts_per_page' => 50,
+	  'posts_per_page' => -1,
 	  'paged' => $paged,
 	  'tax_query' => [],
 	];
 
 	$taxonomies = [
-	  'transaction_type' => 'transaction-type',
+	  'transaction-type' => 'transaction-type',
 	  'location' => 'location',
 	  'sector' => 'sector',
 	  'subsector' => 'subsector',

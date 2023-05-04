@@ -41,7 +41,8 @@
 		@apply px-10 py-[15px] border text-[15px] lg:text-lg;
 	}
 
-	a.btn-long {
+	a.btn-long,
+	button.btn-long {
 
 		@apply text-center text-[15px] px-[37px] py-[15px] lg:px-[52px] lg:py-6 lg:text-lg ;
 	}
