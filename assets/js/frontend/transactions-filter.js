@@ -3,6 +3,11 @@ document.addEventListener('alpine:init', async () => {
 	Alpine.data('transactionFilter', () => ({
 		uri: window.location.origin,
 		isLoading: true,
+		year: null,
+		transactionType: null,
+		locationx: null,
+		sector: null,
+		sub_sector: null,
 		error: null,
 		shownNumber: 18,
 		addPerLoadClick: 18,

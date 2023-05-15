@@ -50,6 +50,7 @@ class RegisterBlocks {
 		$this->register_whole_post_section();
 		$this->register_selected_sector_section();
 		$this->register_transactions_filter_section();
+		$this->register_recent_transactions_section();
 	}
 
 	/**
@@ -455,6 +456,30 @@ class RegisterBlocks {
 						'mode' => 'preview',
 						'data' => array(
 							'block_preview' => TENUP_THEME_TEMPLATE_URL . '/block-preview/transactions-filter-section.jpg',
+						),
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Registers the Recent Transactions Section.
+	 */
+	protected function register_recent_transactions_section() {
+		acf_register_block_type(
+			array(
+				'name'            => 'recent-transactions-section',
+				'title'           => __( 'Recent Transactions Section' ),
+				'render_template' => 'partials/blocks/recent-transactions-section/recent-transactions-section.php',
+				'mode'     => 'auto',
+				'category' => 'shea',
+				'supports' => array( 'anchor' => true ),
+				'example'  => array(
+					'attributes' => array(
+						'mode' => 'preview',
+						'data' => array(
+							'block_preview' => TENUP_THEME_TEMPLATE_URL . '/block-preview/recent-transactions-section.jpg',
 						),
 					),
 				),

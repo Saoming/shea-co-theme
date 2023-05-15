@@ -111,12 +111,14 @@ add_action('rest_api_init', function () {
   function get_transactions($request) {
 
 	$paged = $request->get_param('page') ? $request->get_param('page') : 1;
+	$year  = $request->get_param('year') ? $request->get_param('year') : 2023;
 
 	$args = [
 	  'post_type' => 'transaction',
 	  'posts_per_page' => -1,
 	  'paged' => $paged,
 	  'tax_query' => [],
+	  'year'	=> $year,
 	];
 
 	$taxonomies = [

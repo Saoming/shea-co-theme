@@ -6,6 +6,7 @@
  */
 $args['transaction_date']				 			= get_field('transaction_announcement_date');
 $args['transaction_lp_title']						= get_field('transaction_lp_title');
+$args['transaction_action_text']					= get_field('transaction_action_text');
 $args['first_company']								= get_field('first_company_image');
 $args['first_company_image']						= get_field('first_company_image');
 $args['second_company']								= get_field('second_company');

@@ -54,6 +54,33 @@ if ( ! get_field( 'block_preview' ) ) {
 
 						<div class="mb-[30px]">
 							<h4 class="font-bold text-[18px] leading-[30px] mb-[15px]">Year</h4>
+							<select class="text-[18px] leading-[36px] border-b border-black w-[146px]" x-model="year">
+								<option value="" selected>Select</option>
+								<option
+									@change="toggleFilter('year', '2023')"
+									value="2023"
+								>
+									2023
+								</option>
+								<option
+									@change="toggleFilter('year','2022')"
+									value="2022"
+								>
+									2022
+								</option>
+								<option
+									@change="toggleFilter('year','2021')"
+									value="2021"
+								>
+									2021
+								</option>
+								<option
+									@change="toggleFilter('year','2020')"
+									value="2020"
+								>
+									2020
+								</option>
+							</select>
 						</div>
 
 						<div class="mb-[30px]">
@@ -66,7 +93,7 @@ if ( ! get_field( 'block_preview' ) ) {
 										<input
 											class="w-4 h-4"
 											type="radio"
-											x-model="transaction-type"
+											x-model="transactionType"
 											value="<?php echo esc_attr( $transactionType->slug ); ?>"
 											@change="toggleFilter('transaction-type','<?php echo esc_attr( $transactionType->slug ); ?>')"
 										>
@@ -155,13 +182,13 @@ if ( ! get_field( 'block_preview' ) ) {
 												class="px-[63px] py-[65px] border border-gray-400 flex flex-col items-center justify-center gap-[37px] h-full"
 												x-bind:href="transaction.link"
 												target="_blank"
-												x-bind:aria-label="Click to go transaction.title transaction"
+												x-bind:aria-label="'Click to go to ' + transaction.title + ' transaction'"
 											>
 												<img
 													:src="transaction.acf.first_company_image.url"
 													class="img-responsive"
 												/>
-												<span class="max-w-[99px] text-[18px] leading-[22px]">has been aquired by</span>
+												<span class="text-[18px] leading-[22px] text-center" x-text="transaction.acf.transaction_action_text"></span>
 												<img
 													:src="transaction.acf.second_company_image.url"
 													class="img-responsive"

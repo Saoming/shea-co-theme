@@ -5,7 +5,7 @@
 		<aside class="flex flex-col w-full md:w-3/12 gap-[35px]">
 			<div class="px-[63px] py-[65px] border border-gray-400 flex flex-col items-center justify-center gap-[35px]">
 				<?php echo wp_get_attachment_image( $args['first_company_image']['id'], 'full', false, array( 'class' => 'img-responsive' ) ); ?>
-				<span class="max-w-[99px] text-[18px] leading-[22px]">has been aquired by</span>
+				<span class="text-[18px] leading-[22px] text-center"><?php echo esc_attr( $args['transaction_action_text'] ); ?></span>
 				<?php echo wp_get_attachment_image( $args['second_company_image']['id'], 'full', false, array( 'class' => 'img-responsive' ) ); ?>
 			</div>
 
