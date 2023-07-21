@@ -1,4 +1,4 @@
-<section class="flex flex-col px-[14px] lg:px-[82px] pt-5 pb-[90px]">
+<section class="flex flex-col px-[30px] lg:px-[82px] pt-5 pb-[90px]">
 
 	<div class="text-base leading-[36px] text-center xl:text-left pb-[10px] lg:[pb-0] pt-[97px] xl:pt-0">
 		<a href="/" aria-label="Link to Home Page">
@@ -15,18 +15,18 @@
 		<div class="font-bold tracking-[0.15em] leading-[35px] uppercase"><?php echo esc_attr($args['job_title'] = get_field('job_title')); ?></div>
 	</div>
 
-	<div class="flex flex-col lg:flex-row gap-[30px] xl:gap-[169px]">
+	<div class="flex flex-col lg:flex-row gap-[30px] xl:gap-[169px] 2xl:max-w-[1440px] 2xl:mx-auto">
 		<aside class="order-2 w-full lg:w-4/12 xl:w-3/12 lg:order-1 mb-[30px]">
 			<?php  if( isset($args['transactions']) ): ?>
 			<div class="flex flex-col items-center justify-center lg:justify-start lg:items-start mb-[30px]">
 					<h4 class="text-[18px] leading-[40px] tracking-[0.15em] font-bold uppercase">Select Transactions</h4>
-					<ul>
+					<ul class="flex flex-col gap-5 mt-[10px]">
 					<?php foreach( $args['transactions'] as $transaction): ?>
-						<li>
+						<li class="text-center md:text-left">
 							<a
-								class="text-main text-[18px] leading-[44px]"
+								class="text-main text-[18px]"
 								href="<?php echo esc_url( get_permalink( $transaction ) ); ?>"
-								target="_blank"
+								target="_self"
 								aria-label="Go to Transaction: <?php echo esc_attr( get_the_title( $transaction ) ); ?>"
 							>
 								<?php echo esc_attr( get_the_title( $transaction ) );   ?>
@@ -60,8 +60,8 @@
 					<li class="ml-[-6px]">
 						<a
 							class="text-main text-[18px] leading-[44px] flex flex-row items-center"
-							href="<?php echo esc_url( $args['person_email'] ); ?>"
-							target="_blank"
+							href="mailto:<?php echo esc_attr( $args['person_email'] ); ?>"
+							target="_self"
 							aria-label="Send Our Team Email"
 						>
 							<img
@@ -77,7 +77,7 @@
 		</aside>
 
 		<div class="order-1 w-full lg:w-8/12 xl::w-9/12 lg:order-2 ">
-			<div class="leading-9 text-[18px] flex flex-col gap-3 text-center lg:text-left">
+			<div class="leading-9 text-[18px] flex flex-col gap-3 text-left">
 				<?php echo wp_kses_post( $args['person_bio'] ) ; ?>
 			</div>
 		</div>

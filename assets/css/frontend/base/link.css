@@ -9,10 +9,10 @@
 
 a:where(:not(.components-external-link)) {
 
-	@apply no-underline outline-main focus:ring-4 focus:outline-none hover:opacity-60;
+	@apply no-underline outline-none focus:outline-none hover:opacity-60;
 }
 
 ul.header__menu--white li a:where(:not(.components-external-link)) {
 
-	@apply outline-black;
+	@apply outline-none;
 }

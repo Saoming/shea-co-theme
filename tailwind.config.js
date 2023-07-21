@@ -71,7 +71,7 @@ module.exports = {
 			black: colors.black,
 		},
 		fontFamily: {
-			ibm: "'IBM Plex Sans', sans-serif"
+			ibm: "'IBM Plex Sans', sans-serif",
 		},
 		extend: {
 			/* Extend the default theme */
@@ -80,6 +80,7 @@ module.exports = {
 				'wp-sm': '600px',
 				'wp-md': { min: '601px', max: '783px' },
 				'wp-lg': '784px',
+				'wp-xl': '1440px',
 			},
 			maxWidth: {
 				/* Custom width properties width from the `theme.json` file */

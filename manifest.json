@@ -1,7 +1,7 @@
 {
-  "name": "10up Theme",
-  "short_name": "10up Theme",
-  "description": "Project description for 10up Theme",
+  "name": "Shea&Co Theme",
+  "short_name": "Shea&Co Theme",
+  "description": "heme created from Shea&Co based on 10up Tailwind v3",
   "display": "standalone",
   "start_url": "/?utm_source=app",
   "background_color": "#232323",

@@ -15,18 +15,18 @@ $content 		= get_field('content_repeater');
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full px-[14px] py-[40px] xl:px-[0] lg:py-[80px]"
+	<section 	class="w-full h-full px-[30px] py-[40px] xl:px-[0] lg:py-[80px] section fade"
 				id="<?php echo esc_attr( $id ); ?>"
 				>
-				<div>
+				<div class="2xl:max-w-[1440px] 2xl:mx-auto">
 					<div class="flex flex-col items-center justify-center w-full mb-[32px] lg:mb-[84px] lg:mx-auto lg:max-w-[1060px]">
-						<span class="text-lg font-bold uppercase mb-[25px]"><?php echo esc_attr( $sub_title ); ?></span>
-						<h2 class="mt-0 mb-[40px] text-[24px] leading-[40px] lg:text-[40px] lg:leading-[50px] text-center"><?php echo esc_attr( $title ); ?></h2>
-						<p class="text-[18px] leading-9"> <?php echo esc_textarea( $description ); ?></p>
+						<span class="text-lg font-normal uppercase mb-[25px] tracking-[0.15em] fade fade-delay"><?php echo esc_attr( $sub_title ); ?></span>
+						<h2 class="mt-0 mb-[40px] text-[24px] leading-[40px] lg:text-[40px] lg:leading-[50px] text-center fade fade-delay"><?php echo esc_attr( $title ); ?></h2>
+						<p class="text-[18px] leading-9 text-center fade fade-delay"> <?php echo esc_textarea( $description ); ?></p>
 					</div>
 
 					<?php if ( $content ):  ?>
-						<div class="grid w-full max-w-full grid-cols-1 gap-5 md:grid-cols-3 lg:mx-auto lg:max-w-5xl xl:max-w-7xl">
+						<div class="grid w-full max-w-full grid-cols-1 gap-5 md:grid-cols-3 lg:mx-auto lg:max-w-5xl xl:max-w-7xl fade fade-delay">
 							<?php foreach( $content as $content_about_service ): ?>
 								<?php
 									$list_our_service = $content_about_service['list_our_service'];
@@ -47,7 +47,7 @@ if ( ! get_field( 'block_preview' ) ) {
 									<?php if ( $list_our_service ): ?>
 										<ul class="p-0 m-0">
 											<?php foreach( $list_our_service as $our_service_desc ): ?>
-												<li class="list-none"> <?php echo esc_attr( $our_service_desc['description'] );  ?> </li>
+												<li class="list-none pl-0 mt-0 text-[20px] flex flex-row gap-[4px]"> <span>→</span> <?php echo esc_attr( $our_service_desc['description'] );  ?> </li>
 											<?php endforeach; ?>
 										</ul>
 									<?php endif; ?>

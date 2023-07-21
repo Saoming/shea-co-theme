@@ -28,7 +28,7 @@ if( $bg_image ) {
 if ( ! get_field( 'block_preview' ) ) {
 	?>
 	<section 	class=" w-full h-full 2xl:justify-center pt-[57px] pb-0 px-0 lg:pt-[120px] lg:pb-[120px] flex flex-row flex-wrap
-						lg:px-[82px] gap-5"
+						lg:px-[82px] gap-5 section fade"
 						<?php if ( $bg_image ) : ?>
 						style="
 						background: url('<?php echo esc_url( $bg_url ) ?>');
@@ -42,8 +42,8 @@ if ( ! get_field( 'block_preview' ) ) {
 							 xl:text-left flex flex-col justify-center xl:justify-start items-center xl:items-start"
 					>
 					<?php if( $dark_mode === true ): ?>
-						<span class="mb-1 text-lg font-bold leading-6 uppercase"><?php echo esc_attr( $sub_title ); ?></span>
-						<h2 class="text-2xl lg:text-[40px] leading-10 lg:leading-[60px] mt-0 mb-[25px] lg:mb-[47px] md:max-w-[419px]"><?php echo esc_attr( $title ); ?></h2>
+						<span class="mb-1 text-lg font-bold leading-6 uppercase tracking-[0.15em]"><?php echo esc_attr( $sub_title ); ?></span>
+						<h2 class="text-[24px] md:text-[40px] leading-[40px] md:leading-[60px] mt-0 mb-[25px] lg:mb-[47px] xl:max-w-[419px]"><?php echo esc_attr( $title ); ?></h2>
 
 						<?php if($cta): ?>
 							<a
@@ -57,8 +57,8 @@ if ( ! get_field( 'block_preview' ) ) {
 						<?php endif; ?>
 
 					<?php else: ?>
-						<span class="mb-1 text-lg font-bold leading-6 text-white uppercase"><?php echo esc_attr( $sub_title ); ?></span>
-						<h2 class="text-2xl lg:text-[40px] leading-10 lg:leading-[60px] mt-0 mb-[25px] lg:mb-[47px] md:max-w-[419px] text-white">
+						<span class="mb-1 text-lg font-normal leading-6 text-white uppercase tracking-[0.15em]"><?php echo esc_attr( $sub_title ); ?></span>
+						<h2 class="text-[24px] md:text-[40px] leading-[40px] md:leading-[60px] mt-0 mb-[25px] lg:mb-[47px] xl:max-w-[419px] text-white">
 							<?php echo esc_attr( $title ); ?>
 						</h2>
 
@@ -76,7 +76,7 @@ if ( ! get_field( 'block_preview' ) ) {
 					<?php endif; ?>
 				</div>
 
-				<div class="w-full md:mx-auto md:max-w-[730px] xl:mx-0 ">
+				<div class="w-full md:mx-auto xl:max-w-[550px] wp-xl:max-w-[730px] xl:mx-0 ">
 					<?php if ( $image_right ) : ?>
 						<div class="w-full md:mx-auto md:w-1/2 md:pb-5 lg:w-full">
 							<?php echo wp_get_attachment_image( $image_right, 'full', false, array( "class" => "img-responsive" ) ); ?>

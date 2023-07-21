@@ -15,8 +15,9 @@
 
 	<!-- Top Row -->
 
-	<div class="max-w-fit mb-[46px]">
+	<div class="mb-[46px] 2xl:max-w-[1440px] 2xl:mx-auto">
 		<a
+			class="flex justify-center md:justify-start"
 			href="<?php echo esc_html( site_url() );?>"
 			aria-label="Link to Home Page"
 		>
@@ -26,7 +27,7 @@
 
 	<!-- Middle Row -->
 
-	<div class="flex flex-col gap-[30px] lg:gap-0 flex-wrap w-full lg:flex-row mb-9 justify-center md:justify-start">
+	<div class="flex flex-col gap-[30px] lg:gap-0 flex-wrap w-full lg:flex-row mb-9 justify-center md:justify-start 2xl:max-w-[1440px] 2xl:mx-auto">
 
 		<div class="w-full lg:w-4/12">
 			<h3 class="text-3xl font-bold mb-[10px] leading-[60px]"> Offices </h3>
@@ -45,11 +46,11 @@
 				}
 
 				?>
-				<li class="max-w-[302px] leading-[40px] mb-3">
+				<li class="leading-[40px] mb-3">
 					<a
-						class="text-lg font-bold text-main"
+						class="text-lg font-bold text-center text-main md:text-left"
 						href="<?php echo esc_attr( $args['footer_email_address']['url'] ); ?>"
-						target="_blank"
+						target="_self"
 						aria-label="Click to email us"
 						rel="nofolllow noreferrer">
 						<?php echo esc_attr( $args['footer_email_address']['title'] ); ?>
@@ -60,17 +61,22 @@
 		</div>
 
 		<div class="w-full lg:w-4/12">
-			<h3 class="text-3xl font-bold mb-[10px]"> Information </h3>
+			<h3 class="text-3xl font-bold mb-[10px] hidden md:block"> Information </h3>
 
 			<div class="flex flex-wrap w-full">
-				<div class="w-full md:w-1/2">
+				<div class="hidden w-full md:w-1/2 md:block">
 					<?php echo wp_kses_post( $args['menu_footer_one'] ); ?>
 				</div>
 
 				<div class="w-full md:w-1/2">
 					<?php echo wp_kses_post( $args['menu_footer_two'] ); ?>
 					<div class="inline-block leading-10">
-						<a href="#" rel="no-follow noopener" aria-label="Link to our linkendin">
+						<a
+							target="_blank"
+							href="<?php echo esc_url($args['social_link']['url']) ?>"
+							rel="no-follow noopener"
+							aria-label="Link to our linkendin"
+						>
 							<img
 								src="<?php echo esc_url( TENUP_THEME_DIST_URL . 'images/social-icons/linkedin-icon.svg' ); ?>"
 								alt="Linkedin icon"
@@ -97,8 +103,8 @@
 	</div>
 
 	<!-- Bottom Row -->
-	<div>
-		<span> ©<?php echo esc_attr( get_the_date("Y") ); ?> Shea & Co.  |  Site design by Thank You Design Co.</span>
+	<div class="2xl:max-w-[1440px] 2xl:mx-auto">
+		<span> ©<?php echo esc_attr( get_the_date("Y") ); ?> Shea & Co.  |  Site design by <a href="https://www.thankyoudesign.co/" rel="noopener nofollow">Thank You Design Co.</a></span>
 	</div>
 
 </footer>

@@ -14,13 +14,13 @@ $testimonials_repeater 		= get_field('testimonials_repeater');
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full px-[14px] py-[50px] xl:px-[0] lg:py-[100px] bg-lightBlue"
+	<section 	class="w-full h-full px-[30px] py-[50px] xl:px-[0] lg:py-[100px] bg-lightBlue section fade"
 				id="<?php echo esc_attr( $id ); ?>"
 				>
 				<div class="max-w-full lg:mx-auto lg:max-w-[1060px]">
-					<div class="flex flex-col items-center justify-center w-full mb-[43px]">
-						<span class="text-lg font-bold uppercase mb-[10px] leading-6"><?php echo esc_attr( $sub_title ); ?></span>
-						<h2 class="mt-0 text-center hero-leading"><?php echo esc_attr( $title ); ?></h2>
+					<div class="flex flex-col items-center justify-center w-full mb-[40px]">
+						<span class="text-lg font-normal uppercase mb-[10px] leading-6 tracking-[0.15em] fade fade-delay"><?php echo esc_attr( $sub_title ); ?></span>
+						<h2 class="mt-0 mb-0 text-center hero-leading fade fade-delay"><?php echo esc_attr( $title ); ?></h2>
 					</div>
 
 					<?php if( $testimonials_repeater ):  ?>
@@ -44,7 +44,7 @@ if ( ! get_field( 'block_preview' ) ) {
 								</button>
 							</div>
 
-							<div class="bg-white pt-[62px] pb-0 md:pb-[68px] px-[14px] md:px-[54px] lg:px-[108px]">
+							<div class="bg-white pt-[40px] pb-[40px] md:pb-[68px] px-[30px] md:px-[54px] lg:px-[108px]">
 								<div class=" splide__track">
 									<ul class="splide__list">
 										<?php foreach ( $testimonials_repeater as $single_testimonial ): ?>
@@ -56,7 +56,7 @@ if ( ! get_field( 'block_preview' ) ) {
 												$testimonial_image 				= $single_testimonial['person_image'];
 											?>
 											<li class="splide__slide">
-												<p class="text-[18px] leading-[40px] mb-[47px]"> <?php echo esc_attr( $testimonial_description ); ?></p>
+												<p class="mt-0 text-[18px] leading-[40px] mb-[40px]"> <?php echo esc_attr( $testimonial_description ); ?></p>
 												<div class="flex flex-col gap-5 md:flex-row">
 													<?php echo wp_get_attachment_image( $testimonial_image, 'full', false, array( "class" => "img-responsive" ) ); ?>
 													<div class="flex flex-col">

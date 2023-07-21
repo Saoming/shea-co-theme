@@ -1,4 +1,4 @@
-<section class="w-full h-full px-[14px] lg:px-[82px] pt-[54px] pb-[82px] flex flex-col items-start justify-start">
+<section class="w-full h-full px-[30px] lg:px-[82px] pt-[54px] pb-[82px] flex flex-col items-start justify-start 2xl:max-w-[1440px] 2xl:mx-auto">
 
 	<div class="text-base leading-[36px] pb-[60px] pt-[38px]">
 		<a href="/" aria-label="Link to Home Page">
@@ -27,14 +27,15 @@
 		<?php the_content(); ?>
 	</div>
 
-	<a
-		class="text-black no-underline bg-white border-black btn"
-		href="<?php echo esc_url($args['insight_download_button']['url']); ?>"
-		target="_blank"
-		aria-label="Click to go download the article"
-	>
-		Download The Article
-	</a>
-
+	<?php if( $args['insight_download_button'] ): ?>
+		<a
+			class="text-black no-underline bg-white border-black btn"
+			href="<?php echo esc_url($args['insight_download_button']['url']); ?>"
+			target="_blank"
+			aria-label="Click to go download the article"
+		>
+			Download The Article
+		</a>
+	<?php endif; ?>
 
 </section>

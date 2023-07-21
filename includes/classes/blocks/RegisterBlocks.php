@@ -36,12 +36,14 @@ class RegisterBlocks {
 		$this->register_hero_section_block();
 		$this->register_hero_section_left_aligned_block();
 		$this->register_hero_section_before_archive();
+		$this->register_hero_section_carousel();
 		$this->register_our_team_section();
 		$this->register_single_column_section_image_and_cta();
 		$this->register_career_section_content_three_rows_and_cta_button();
 		$this->register_about_section_content_two_column_image();
 		$this->register_our_client_section_content_three_column_image_gallery();
 		$this->register_our_service_section_content_three_rows_with_icon();
+		$this->register_founder_owned_section_content_three_rows();
 		$this->register_two_full_width_column_content_image_and_description();
 		$this->register_alumni_gallery();
 		$this->register_career_section_content_join_our_team();
@@ -101,7 +103,7 @@ class RegisterBlocks {
 		);
 	}
 
-		/**
+	/**
 	 * Registers the Hero Section block on the Insights and Transactions
 	 */
 	protected function register_hero_section_before_archive() {
@@ -112,12 +114,37 @@ class RegisterBlocks {
 				'render_template' => 'partials/blocks/hero-section-before-archive/hero-section-before-archive.php',
 				'mode'     => 'auto',
 				'category' => 'shea',
+				'enqueue_assets'  => ResourceEnqueuer::enqueue_animated_counter_hero_script(),
 				'supports' => array( 'anchor' => true ),
 				'example'  => array(
 					'attributes' => array(
 						'mode' => 'preview',
 						'data' => array(
 							'block_preview' => TENUP_THEME_TEMPLATE_URL . '/block-preview/hero-section-before-archive.jpg',
+						),
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Registers the Hero Section block on the Insights and Transactions
+	 */
+	protected function register_hero_section_carousel() {
+		acf_register_block_type(
+			array(
+				'name'            => 'hero-section-carousel',
+				'title'           => __( 'Hero Section Carousel' ),
+				'render_template' => 'partials/blocks/hero-section-carousel/hero-section-carousel.php',
+				'mode'     => 'auto',
+				'category' => 'shea',
+				'supports' => array( 'anchor' => true ),
+				'example'  => array(
+					'attributes' => array(
+						'mode' => 'preview',
+						'data' => array(
+							'block_preview' => TENUP_THEME_TEMPLATE_URL . '/block-preview/hero-section.png',
 						),
 					),
 				),
@@ -262,6 +289,30 @@ class RegisterBlocks {
 						'mode' => 'preview',
 						'data' => array(
 							'block_preview' => TENUP_THEME_TEMPLATE_URL . '/block-preview/our-service-section-content-three-rows-with-icon.jpg',
+						),
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Registers the Founder Owned Section Content Three Rows.
+	 */
+	protected function register_founder_owned_section_content_three_rows() {
+		acf_register_block_type(
+			array(
+				'name'            => 'founder-owned-section-content-three-rows',
+				'title'           => __( 'Founder Owned Section Content Three Rows' ),
+				'render_template' => 'partials/blocks/founder-owned-section-content-three-rows/founder-owned-section-content-three-rows.php',
+				'mode'     => 'auto',
+				'category' => 'shea',
+				'supports' => array( 'anchor' => true ),
+				'example'  => array(
+					'attributes' => array(
+						'mode' => 'preview',
+						'data' => array(
+							'block_preview' => TENUP_THEME_TEMPLATE_URL . '/block-preview/founder-owned-section-content-three-rows.jpg',
 						),
 					),
 				),

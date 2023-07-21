@@ -45,9 +45,53 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_644516faad656",
+                    "key": "field_64861b5f99665",
+                    "label": "Number Prefix",
+                    "name": "number_prefix",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_644516ddad655"
+                },
+                {
+                    "key": "field_64861edd489f3",
                     "label": "Number",
-                    "name": "number",
+                    "name": "number_value",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_644516ddad655"
+                },
+                {
+                    "key": "field_64861bac99666",
+                    "label": "Number Affix",
+                    "name": "number_affix",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -127,5 +171,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1682249577
+    "modified": 1686511353
 }

@@ -1,1 +1,11 @@
 /* Templates */
+
+#tinymce p {
+
+	@apply m-4;
+}
+
+#tinymce ul {
+
+	@apply pl-10 my-4 list-disc;
+}

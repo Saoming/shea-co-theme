@@ -111,15 +111,26 @@ add_action('rest_api_init', function () {
   function get_transactions($request) {
 
 	$paged = $request->get_param('page') ? $request->get_param('page') : 1;
-	$year  = $request->get_param('year') ? $request->get_param('year') : 2023;
+	$year  = $request->get_param('year') ? $request->get_param('year') : NULL;
 
 	$args = [
-	  'post_type' => 'transaction',
-	  'posts_per_page' => -1,
-	  'paged' => $paged,
-	  'tax_query' => [],
-	  'year'	=> $year,
+		'post_type' => 'transaction',
+		'posts_per_page' => -1,
+		'paged' => $paged,
+		'tax_query' => [],
+		'orderby'=> 'date',
+		'order'		=> 'DESC'
 	];
+
+	if($year) {
+		$args['meta_query'] = [
+			[
+				'key'     => 'transaction_announcement_date',
+				'compare' => 'LIKE',
+				'value'   => $year,
+			],
+		];
+	}
 
 	$taxonomies = [
 	  'transaction-type' => 'transaction-type',
@@ -148,15 +159,46 @@ add_action('rest_api_init', function () {
 		  'ID' 		=> get_the_ID(),
 		  'title' 	=> get_the_title(),
 		  'link'	=> get_permalink(),
-		  'year'	=> get_the_date('Y'),
+		  'year'	=> wp_date('Y', strtotime(get_field('transaction_announcement_date'))),
 		  'content' => get_the_content(),
 		  'acf'     => get_fields(),
 		];
 	  }
 	  wp_reset_postdata();
 
+
 	  return new WP_REST_Response($transactions, 200);
 	} else {
 	  return new WP_Error('no_transactions', 'No transactions found', ['status' => 404]);
 	}
   }
+
+/**
+ * Add Active CSS class for a nav menu based on condition.
+ *
+ * @param array  $classes The CSS classes that are applied to the menu item's <li> element.
+ * @param object $item    The current menu item.
+ * @return array (maybe) modified nav menu class.
+ */
+function custom_menu_class( $classes, $item ) {
+	$post = get_post();
+
+	if ( $item->title == $post->post_title ) {
+		array_push($classes, 'active');
+	}
+
+	return $classes;
+}
+add_filter( 'nav_menu_css_class' , 'custom_menu_class' , 10, 2 );
+
+/**
+ * Add Green House Job Boards in the footer
+ *
+ */
+
+add_action('wp_footer','greenhouse_scripts');
+function greenhouse_scripts(){
+    if( is_page('careers') ) {
+		echo '<script src="https://boards.greenhouse.io/embed/job_board/js?for=sheacompany"></script>';
+	}
+}

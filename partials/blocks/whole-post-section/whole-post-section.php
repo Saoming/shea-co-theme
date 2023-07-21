@@ -4,7 +4,7 @@
  *
  * @package TenUpTheme
  */
-$id = 'whole-team-section-' . $block['id'];
+$id = 'whole-post-section-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$id = $block['anchor'];
 }
@@ -12,7 +12,7 @@ if ( ! empty( $block['anchor'] ) ) {
 $args_market_map = array(
 	'post_type'         => 'post',
 	'posts_per_page'    => -1,
-	'order'             => 'ASC',
+	'order'             => 'DESC',
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'category',
@@ -25,7 +25,7 @@ $args_market_map = array(
 $args_industry_insight = array(
 	'post_type'         => 'post',
 	'posts_per_page'    => -1,
-	'order'             => 'ASC',
+	'order'             => 'DESC',
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'category',
@@ -37,7 +37,7 @@ $args_industry_insight = array(
 $args_quarterly_report = array(
 	'post_type'         => 'post',
 	'posts_per_page'    => -1,
-	'order'             => 'ASC',
+	'order'             => 'DESC',
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'category',
@@ -47,6 +47,20 @@ $args_quarterly_report = array(
 	)
 );
 
+$args_all_categories = array(
+	'post_type'         => 'post',
+	'posts_per_page'    => -1,
+	'order'             => 'DESC',
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'category',
+			'field'    => 'slug',
+			'terms'    => array( 'All' ),
+		)
+	)
+);
+
+$all_industry_insights			=  new WP_Query($args_all_categories);
 $industry_insight_categories 	=  new WP_Query($args_industry_insight);
 $market_map_categories 			=  new WP_Query($args_market_map);
 $quarterly_report_categories 	=  new WP_Query($args_quarterly_report);
@@ -61,11 +75,11 @@ $count = 0;
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full px-[14px] lg:px-[82px] pt-[54px] pb-[82px] flex flex-col justify-center items-center"
+	<section 	class="w-full h-full px-[30px] lg:px-[82px] pt-[40px] pb-[55px] lg:py-[82px] flex flex-col justify-center items-center"
 				id="<?php echo esc_attr( $id ); ?>"
 				x-data="{ currentTab: 0 }"
 				>
-				<ul class="flex flex-row gap-3">
+				<ul class="flex flex-row flex-wrap items-center justify-center gap-3">
 					<?php if ( $categories ): ?>
 						<?php foreach( $categories as $category): ?>
 							<li>
@@ -79,65 +93,18 @@ if ( ! get_field( 'block_preview' ) ) {
 									<?php echo esc_attr( $category->cat_name );   ?>
 								</button>
 							</li>
-
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</ul>
 
-				<div class="pt-[54px]">
+				<div class="pt-[54px] 2xl:max-w-[1440px] 2xl:mx-auto">
 					<div
-						class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
-						x-show="currentTab === 0"
-						x-cloak
-					>
-					<?php if ( $industry_insight_categories->have_posts() ) : ?>
-						<?php  while ($industry_insight_categories->have_posts()) : $industry_insight_categories->the_post(); ?>
-							<?php
-								$categories_industry = get_the_category(get_the_ID());
-								$content = get_the_excerpt();
-								$featured_img = get_post_thumbnail_id();
-								$separator = ' ';
-								$output = '';
-							?>
-								<li class="list-none">
-									<a
-										class="w-full h-full flex flex-col justify-start items-center no-underline py-[41px] px-[34px] border border-gray-400 text-center hover:bg-shades hover:opacity-100 transition-colors"
-										href="<?php echo esc_url( get_permalink() ); ?>"
-										target="_blank"
-										aria-label="Click to go <?php get_the_title() ?> article"
-									>
-										<?php if( ! empty( $categories_industry )): ?>
-											<?php foreach ($categories_industry as $category_industry): ?>
-												<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
-											<?php endforeach; ?>
-										<?php endif; ?>
-
-										<?php
-										echo wp_get_attachment_image(
-											$featured_img,
-											array( 90, 75 ),
-											false,
-											array( 'class' => 'img-responsive pb-[14px]' )
-											);
-										?>
-										<div class="text-[20px] leading-[48px] font-bold mb-2"><?php the_title(); ?></div>
-
-        								<div class="text-[18px] leading-9 mb-[43px]"><?php echo esc_attr( wp_trim_words( $content, 12, '...' ) ) ; ?></div>
-										<div class="font-medium text-[20px] leading-5"> Read More > </div>
-									</a>
-								</li>
-						<?php endwhile; ?>
-						<?php wp_reset_postdata(); ?>
-					<?php endif; ?>
-					</div>
-
-					<div
-						class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
-						x-show="currentTab === 1"
-						x-cloak
-					>
-						<?php if ( $market_map_categories->have_posts() ) : ?>
-							<?php  while ($market_map_categories->have_posts()) : $market_map_categories->the_post(); ?>
+							class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+							x-show="currentTab === 0"
+							x-cloak
+						>
+						<?php if ( $all_industry_insights->have_posts() ) : ?>
+							<?php  while ($all_industry_insights->have_posts()) : $all_industry_insights->the_post(); ?>
 								<?php
 									$categories_industry = get_the_category(get_the_ID());
 									$content = get_the_excerpt();
@@ -149,12 +116,14 @@ if ( ! get_field( 'block_preview' ) ) {
 										<a
 											class="w-full h-full flex flex-col justify-start items-center no-underline py-[41px] px-[34px] border border-gray-400 text-center hover:bg-shades hover:opacity-100 transition-colors"
 											href="<?php echo esc_url( get_permalink() ); ?>"
-											target="_blank"
+											target="_self"
 											aria-label="Click to go <?php get_the_title() ?> article"
 										>
 											<?php if( ! empty( $categories_industry )): ?>
-												<?php foreach ($categories_industry as $category_industry): ?>
-													<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
+												<?php foreach ($categories_industry as $index => $category_industry): ?>
+													<?php if($index > 0): ?>
+														<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
+													<?php endif; ?>
 												<?php endforeach; ?>
 											<?php endif; ?>
 
@@ -163,7 +132,7 @@ if ( ! get_field( 'block_preview' ) ) {
 												$featured_img,
 												array( 90, 75 ),
 												false,
-												array( 'class' => 'img-responsive pb-[14px]' )
+												array( 'class' => 'img-responsive w-[80px] h-[80px] pb-[14px]' )
 												);
 											?>
 											<div class="text-[20px] leading-[48px] font-bold mb-2"><?php the_title(); ?></div>
@@ -175,15 +144,14 @@ if ( ! get_field( 'block_preview' ) ) {
 							<?php endwhile; ?>
 							<?php wp_reset_postdata(); ?>
 						<?php endif; ?>
-					</div>
-
-					<div
-						class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
-						x-show="currentTab === 2"
-						x-cloak
-					>
-						<?php if ( $quarterly_report_categories->have_posts() ) : ?>
-							<?php  while ($quarterly_report_categories->have_posts()) : $quarterly_report_categories->the_post(); ?>
+						</div>
+						<div
+							class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+							x-show="currentTab === 1"
+							x-cloak
+						>
+						<?php if ( $industry_insight_categories->have_posts() ) : ?>
+							<?php  while ($industry_insight_categories->have_posts()) : $industry_insight_categories->the_post(); ?>
 								<?php
 									$categories_industry = get_the_category(get_the_ID());
 									$content = get_the_excerpt();
@@ -195,12 +163,14 @@ if ( ! get_field( 'block_preview' ) ) {
 										<a
 											class="w-full h-full flex flex-col justify-start items-center no-underline py-[41px] px-[34px] border border-gray-400 text-center hover:bg-shades hover:opacity-100 transition-colors"
 											href="<?php echo esc_url( get_permalink() ); ?>"
-											target="_blank"
+											target="_self"
 											aria-label="Click to go <?php get_the_title() ?> article"
 										>
 											<?php if( ! empty( $categories_industry )): ?>
-												<?php foreach ($categories_industry as $category_industry): ?>
-													<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
+												<?php foreach ($categories_industry as $index => $category_industry): ?>
+													<?php if($index > 0): ?>
+															<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
+													<?php endif; ?>
 												<?php endforeach; ?>
 											<?php endif; ?>
 
@@ -209,7 +179,7 @@ if ( ! get_field( 'block_preview' ) ) {
 												$featured_img,
 												array( 90, 75 ),
 												false,
-												array( 'class' => 'img-responsive pb-[14px]' )
+												array( 'class' => 'img-responsive w-[80px] h-[80px] pb-[14px]' )
 												);
 											?>
 											<div class="text-[20px] leading-[48px] font-bold mb-2"><?php the_title(); ?></div>
@@ -221,9 +191,103 @@ if ( ! get_field( 'block_preview' ) ) {
 							<?php endwhile; ?>
 							<?php wp_reset_postdata(); ?>
 						<?php endif; ?>
-					</div>
+						</div>
 
+						<div
+							class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+							x-show="currentTab === 2"
+							x-cloak
+						>
+							<?php if ( $market_map_categories->have_posts() ) : ?>
+								<?php  while ($market_map_categories->have_posts()) : $market_map_categories->the_post(); ?>
+									<?php
+										$categories_industry = get_the_category(get_the_ID());
+										$content = get_the_excerpt();
+										$featured_img = get_post_thumbnail_id();
+										$separator = ' ';
+										$output = '';
+									?>
+										<li class="list-none">
+											<a
+												class="w-full h-full flex flex-col justify-start items-center no-underline py-[41px] px-[34px] border border-gray-400 text-center hover:bg-shades hover:opacity-100 transition-colors"
+												href="<?php echo esc_url( get_permalink() ); ?>"
+												target="_self"
+												aria-label="Click to go <?php get_the_title() ?> article"
+											>
+												<?php if( ! empty( $categories_industry )): ?>
+													<?php foreach ($categories_industry as $index => $category_industry): ?>
+														<?php if($index > 0): ?>
+															<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
+														<?php endif; ?>
+													<?php endforeach; ?>
+												<?php endif; ?>
 
+												<?php
+												echo wp_get_attachment_image(
+													$featured_img,
+													array( 90, 75 ),
+													false,
+													array( 'class' => 'img-responsive w-[80px] h-[80px] pb-[14px]' )
+													);
+												?>
+												<div class="text-[20px] leading-[48px] font-bold mb-2"><?php the_title(); ?></div>
+
+												<div class="text-[18px] leading-9 mb-[43px]"><?php echo esc_attr( wp_trim_words( $content, 12, '...' ) ) ; ?></div>
+												<div class="font-medium text-[20px] leading-5"> Read More > </div>
+											</a>
+										</li>
+								<?php endwhile; ?>
+								<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
+						</div>
+
+						<div
+							class="grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+							x-show="currentTab === 3"
+							x-cloak
+						>
+							<?php if ( $quarterly_report_categories->have_posts() ) : ?>
+								<?php  while ($quarterly_report_categories->have_posts()) : $quarterly_report_categories->the_post(); ?>
+									<?php
+										$categories_industry = get_the_category(get_the_ID());
+										$content = get_the_excerpt();
+										$featured_img = get_post_thumbnail_id();
+										$separator = ' ';
+										$output = '';
+									?>
+										<li class="list-none">
+											<a
+												class="w-full h-full flex flex-col justify-start items-center no-underline py-[41px] px-[34px] border border-gray-400 text-center hover:bg-shades hover:opacity-100 transition-colors"
+												href="<?php echo esc_url( get_permalink() ); ?>"
+												target="_self"
+												aria-label="Click to go <?php get_the_title() ?> article"
+											>
+												<?php if( ! empty( $categories_industry )): ?>
+													<?php foreach ($categories_industry as $index => $category_industry): ?>
+														<?php if($index > 0): ?>
+														<span class="text-[18px] text-black opacity-40 mb-[28px] font-bold uppercase"> <?php echo esc_attr( $category_industry->name ); ?> </span>
+														<?php endif; ?>
+													<?php endforeach; ?>
+												<?php endif; ?>
+
+												<?php
+												echo wp_get_attachment_image(
+													$featured_img,
+													array( 90, 75 ),
+													false,
+													array( 'class' => 'img-responsive w-[80px] h-[80px] pb-[14px]' )
+													);
+												?>
+												<div class="text-[20px] leading-[48px] font-bold mb-2"><?php the_title(); ?></div>
+
+												<div class="text-[18px] leading-9 mb-[43px]"><?php echo esc_attr( wp_trim_words( $content, 12, '...' ) ) ; ?></div>
+												<div class="font-medium text-[20px] leading-5"> Read More > </div>
+											</a>
+										</li>
+								<?php endwhile; ?>
+								<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
+						</div>
 				</div>
 
 	</section>

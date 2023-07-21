@@ -73,6 +73,19 @@ class ResourceEnqueuer {
 		);
 	}
 
+	/**
+	 * Enqueues the Animated Counter Hero Before Archive script
+	 */
+	public static function enqueue_animated_counter_hero_script() {
+		wp_enqueue_script(
+			'animated-counter-hero-script-defer',
+			TENUP_THEME_DIST_URL . '/js/animated-counter-hero-script.js',
+			array(),
+			filemtime( TENUP_THEME_DIST_PATH . '/js/animated-counter-hero-script.js' ),
+			false
+		);
+	}
+
 
 	/**
 	 * Registers the Splide Assets

@@ -31,14 +31,15 @@
 	h1.hero-leading,
 	h2.hero-leading {
 
-		@apply text-[35px] leading-[45px] lg:text-[70px] lg:leading-[90px] mb-8;
+		@apply text-[35px] leading-[45px] sm:leading-[60px] lg:text-[70px] lg:leading-[90px] mb-12;
 	}
 
 	/* Links & Buttons  */
 
-	a.btn {
+	a.btn,
+	button.btn {
 
-		@apply px-10 py-[15px] border text-[15px] lg:text-lg;
+		@apply px-10 py-[15px] border-2 text-[15px] lg:text-lg;
 	}
 
 	a.btn-long,
@@ -65,7 +66,7 @@
 	.header__menu,
 	.header__menu .sub-menu {
 
-		@apply flex flex-row;
+		@apply flex flex-row xl:gap-[20px] 2xl:gap-[38px];
 	}
 
 	.header__menu-mobile,
@@ -73,7 +74,6 @@
 
 		@apply flex flex-col;
 	}
-
 
 	.header__menu-mobile li {
 
@@ -88,7 +88,7 @@
 	.header__menu .menu-item-text,
 	.header__menu-mobile .menu-item-text {
 
-		@apply text-lg font-medium leading-10 xl:pl-[30px] 2xl:pl-[38px];
+		@apply text-lg font-medium leading-10;
 	}
 
 	.header__menu--white .menu-item-text {
@@ -99,6 +99,17 @@
 	.header__menu--black .menu-item-text {
 
 		@apply text-black;
+	}
+
+	#menu-menu-header-primary .active .menu-item-text,
+	#menu-menu-header-primary-1 .active .menu-item-text {
+
+		@apply border-b-[3px] pb-[10px];
+	}
+
+	#menu-menu-header-primary-1 .active .menu-item-text {
+
+		@apply border-main;
 	}
 
 	/* Footer Menu */
@@ -140,7 +151,7 @@
 	.form-contact .gform_wrapper.gravity-theme .gform-body .gfield input::placeholder,
 	.form-contact .gform_wrapper.gravity-theme .gform-body .gfield textarea::placeholder {
 
-		@apply text-white focus:ring-white;
+		@apply text-white ;
 	}
 
 	.form-footer .gform_wrapper.gravity-theme .gform-body .gfield input {
@@ -150,7 +161,7 @@
 
 	.form-contact .gform_wrapper.gravity-theme .gform-body .gfield input {
 
-		@apply text-white border-white focus:ring-white mb-[38px];
+		@apply text-white border-white mb-[38px];
 	}
 
 	/* stylelint-disable-next-line selector-id-pattern */
@@ -161,7 +172,7 @@
 
 	.form-contact .gform_wrapper.gravity-theme .gform-body .gfield textarea {
 
-		@apply mb-[18px] bg-transparent border text-white border-white focus:ring-white px-[14px] py-[9px];
+		@apply mb-[18px] bg-transparent border text-white border-white px-[14px] py-[9px];
 	}
 
 	.form-contact .gform_wrapper.gravity-theme .gform-body .gfield_checkbox .gchoice {
@@ -186,12 +197,12 @@
 
 	.form-footer .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
 
-		@apply px-10 py-5 text-white cursor-pointer bg-main focus:ring-4 focus:outline-none hover:opacity-60;
+		@apply px-10 py-[15px] text-white cursor-pointer bg-main hover:opacity-60 rounded-none;
 	}
 
 	.form-contact .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
 
-		@apply px-10 py-5 text-black bg-white cursor-pointer focus:ring-4 focus:outline-none hover:opacity-60;
+		@apply px-10 py-[15px] text-black bg-white cursor-pointer hover:opacity-60;
 	}
 
 	/* Splide Testimonial Slider */
@@ -208,7 +219,7 @@
 
 	.recent-transactions .splide__track .splide__list .splide__slide:not(.is-active) a {
 
-		@apply scale-y-[0.9];
+		@apply md:scale-y-[0.9] max-h-[429px];
 	}
 
 	.recent-transactions .splide__track .splide__list .is-active {
@@ -218,7 +229,7 @@
 
 	.recent-transactions .splide__track .splide__list .is-active a {
 
-		@apply border border-gray-400 absolute z-10 transform scale-x-[1.1] scale-y-100;
+		@apply border-0 static mx-0 md:border md:border-[#767676] md:absolute md:z-10;
 	}
 
 	/* Alumni Gallery  */
@@ -232,7 +243,7 @@
 
 	.whole__team__single-img {
 
-		@apply w-full object-cover max-w-[304px] h-[275px];
+		@apply w-full object-cover max-w-[304px] h-[340px];
 	}
 
 	/* Whole Post Section */
@@ -274,4 +285,26 @@
 		@apply w-full object-cover max-w-[305px] h-[341px];
 	}
 
+	/* animation  */
+
+	.acf-block-preview .fade {
+
+		@apply opacity-100;
+	}
+
+	.editor-styles-wrapper .fade {
+
+		@apply opacity-100;
+	}
+
+	.fade {
+
+		@apply opacity-0 transition-all duration-[0.8s] ease-linear translate-y-[50px];
+	}
+
+	.in-view.fade,
+	.in-view .fade {
+
+		@apply translate-y-0 opacity-100 transform-none;
+	}
 }

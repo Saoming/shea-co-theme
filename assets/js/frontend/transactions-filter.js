@@ -3,11 +3,14 @@ document.addEventListener('alpine:init', async () => {
 	Alpine.data('transactionFilter', () => ({
 		uri: window.location.origin,
 		isLoading: true,
-		year: null,
+		yearx: null,
 		transactionType: null,
 		locationx: null,
 		sector: null,
-		sub_sector: null,
+		yearMobile: null,
+		transactionTypeMobile: null,
+		locationMobile: null,
+		sectorMobile: null,
 		error: null,
 		shownNumber: 18,
 		addPerLoadClick: 18,
@@ -45,10 +48,14 @@ document.addEventListener('alpine:init', async () => {
 		},
 		resetFilter() {
 			this.filters = new URLSearchParams();
+			this.yearx = null;
+			this.transactionType = null;
+			this.locationx = null;
+			this.sector = null;
+			this.fetch();
 		},
 		toggleFilter(key, val) {
 			// eslint-disable-next-line no-alert
-
 			this.filters.set(key, val);
 			this.fetch();
 		},

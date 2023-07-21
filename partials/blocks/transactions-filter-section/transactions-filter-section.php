@@ -9,86 +9,126 @@ if ( ! empty( $block['anchor'] ) ) {
 	$id = $block['anchor'];
 }
 
-$transactionTypes = get_terms([
+$args['transactionTypes'] = get_terms([
 	'taxonomy' => 'transaction-type',
 	'hide_empty' => true,
 ]);
 
-$locations = get_terms([
+$args['locations'] = get_terms([
 	'taxonomy' => 'location',
 	'hide_empty' => true,
 ]);
 
-$sectors = get_terms([
+$args['sectors'] = get_terms([
 	'taxonomy' => 'sector',
-	'hide_empty' => true,
-]);
-
-$sub_sectors = get_terms([
-	'taxonomy' => 'subsector',
 	'hide_empty' => true,
 ]);
 
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full px-[14px] lg:px-[82px] flex flex-col justify-center items-center py-[82px]"
+	<section 	class="w-full h-full px-[30px] lg:px-[82px] flex flex-col justify-center items-center py-[55px] lg:py-[82px]"
 				id="<?php echo esc_attr( $id ); ?>"
 				x-data="transactionFilter"
 				>
 
-				<div class="flex flex-col md:flex-row gap-[150px]">
-					<div class="w-full md:w-3/12">
-						<div class="mb-5">
+				<div class="flex flex-col lg:flex-row justify-center gap-0 lg:gap-[60px] 2xl:max-w-[1440px] 2xl:mx-auto">
+					<div class="w-full lg:w-3/12 wp-xl:w-[20%]">
+
+						<div class="flex flex-col items-center justify-center mb-5 lg:hidden">
+							<button
+								class="flex flex-row items-center gap-[20px] text-[18px] align-middle text-black no-underline border border-black btn-long"
+								x-on:click="filter = ! filter"
+								:aria-expanded="filter"
+								aria-controls="filter"
+								aria-label="Transaction Setting Menu"
+							>
+								<img
+									class="img-responsive"
+									src="<?php echo esc_url( TENUP_THEME_DIST_URL . 'images/transactions-setting-icon.svg' ); ?>"
+									alt="mobile icon settings"
+									width="38"
+									height="18"
+								/>
+									Filter
+							</button>
+						</div>
+
+						<div class="flex flex-row justify-center mb-5 lg:flex-col lg:justify-start gap-[10px] lg:gap-0">
 							<div class="text-darkGray text-[16px] leading-[30px]">
 								<span class="font-bold" x-text="transactions.length"></span> Results
 							</div>
-							<button
-								class="text-[16px] text-main leading-[30px] underline"
-								@click="showAll()"
-								aria-label="Click to load all the transactions"
-							>
-								View All
-							</a>
+							<div class="flex flex-row gap-[10px]">
+								<!-- <button
+									class="text-[16px] text-main leading-[30px] underline"
+									@click="showAll()"
+									aria-label="Click to load all the transactions"
+								>
+									View All
+								</button> -->
+
+								<button
+									class="text-[16px] text-main leading-[30px] underline hidden lg:block"
+									@click="resetFilter()"
+									aria-label="Click to load all the transactions"
+								>
+									Reset Filter
+								</button>
+							</div>
+
 						</div>
 
-						<div class="mb-[30px]">
+						<div class="hidden lg:block mb-[30px]">
 							<h4 class="font-bold text-[18px] leading-[30px] mb-[15px]">Year</h4>
-							<select class="text-[18px] leading-[36px] border-b border-black w-[146px]" x-model="year">
+							<select class="text-[18px] leading-[36px] border-b border-black w-[146px]" @change="toggleFilter('year', event.target.value)" x-model="yearx">
 								<option value="" selected>Select</option>
-								<option
-									@change="toggleFilter('year', '2023')"
-									value="2023"
+								<?php
+									$array = array();
+
+									$args_all_transactions = array(
+										'post_type'         => 'transaction',
+										'posts_per_page'    => -1,
+										'orderby'			=> 'meta_value',
+										'order'				=> 'DESC',
+										'meta_query'		=> array (
+											array(
+												'key'     => 'transaction_announcement_date',
+												'compare' => 'LIKE',
+											)
+										)
+									);
+
+									$query = new WP_Query($args_all_transactions);
+								?>
+								<?php
+									if ( $query->have_posts() ) {
+										$counter = 0;
+										while ( $query->have_posts() ) {
+											$query->the_post();
+											$array[ $counter ][ 'year' ]        = date('Y', strtotime(get_field('transaction_announcement_date', get_the_ID())));
+											$counter++;
+										}
+										$result = wp_list_pluck($array, 'year');
+										$args['years'] = array_unique($result, SORT_REGULAR);
+									}
+									wp_reset_postdata();
+								?>
+								<?php foreach($args['years'] as $result): ?>
+									<option
+									value="<?php echo $result ?>"
 								>
-									2023
+									<?php echo $result ?>
 								</option>
-								<option
-									@change="toggleFilter('year','2022')"
-									value="2022"
-								>
-									2022
-								</option>
-								<option
-									@change="toggleFilter('year','2021')"
-									value="2021"
-								>
-									2021
-								</option>
-								<option
-									@change="toggleFilter('year','2020')"
-									value="2020"
-								>
-									2020
-								</option>
+								<?php endforeach; ?>
 							</select>
 						</div>
 
-						<div class="mb-[30px]">
+						<div class="hidden lg:block mb-[30px]">
 							<h4 class="font-bold text-[18px] leading-[30px] mb-[15px]">Transaction Type</h4>
 
-							<?php if($transactionTypes): ?>
+							<?php if($args['transactionTypes']): ?>
 								<ul>
-								<?php foreach($transactionTypes as $transactionType): ?>
+								<?php foreach($args['transactionTypes'] as $transactionType): ?>
 									<li class="flex flex-row gap-[13px] items-center text-[18px] leading-[36px]">
 										<input
 											class="w-4 h-4"
@@ -104,12 +144,12 @@ if ( ! get_field( 'block_preview' ) ) {
 							<?php endif; ?>
 						</div>
 
-						<div class="mb-[30px]">
+						<div class="hidden lg:block mb-[30px]">
 							<h4 class="font-bold text-[18px] leading-[30px] mb-[15px]">Location</h4>
 
-							<?php if($locations): ?>
+							<?php if($args['locations']): ?>
 								<ul>
-								<?php foreach($locations as $location): ?>
+								<?php foreach($args['locations'] as $location): ?>
 									<li class="flex flex-row gap-[13px] items-center text-[18px] leading-[36px]">
 										<input
 											class="w-4 h-4"
@@ -126,12 +166,12 @@ if ( ! get_field( 'block_preview' ) ) {
 
 						</div>
 
-						<div class="mb-[30px]">
+						<div class="hidden lg:block mb-[30px]">
 							<h4 class="font-bold text-[18px] leading-[30px] mb-[15px]">Sector</h4>
 
-							<?php if($sectors): ?>
+							<?php if($args['sectors']): ?>
 								<ul>
-								<?php foreach($sectors as $sector): ?>
+								<?php foreach($args['sectors'] as $sector): ?>
 									<li class="flex flex-row gap-[13px] items-center text-[18px] leading-[36px]">
 										<input
 											class="w-4 h-4"
@@ -147,58 +187,42 @@ if ( ! get_field( 'block_preview' ) ) {
 							<?php endif; ?>
 
 						</div>
-
-
-						<div class="mb-[30px]">
-							<h4 class="font-bold text-[18px] leading-[30px] mb-[15px]">Subsector</h4>
-
-							<?php if($sub_sectors): ?>
-								<ul>
-								<?php foreach($sub_sectors as $sub_sector): ?>
-									<li class="flex flex-row gap-[13px] items-center text-[18px] leading-[36px]">
-										<input
-											class="w-4 h-4"
-											type="radio"
-											x-model="sub_sector"
-											value="<?php echo esc_attr( $sub_sector->slug ); ?>"
-											@change="toggleFilter('subsector','<?php echo esc_attr( $sub_sector->slug ); ?>')"
-
-										>
-										<?php echo esc_attr($sub_sector->name) ?>
-									</li>
-								<?php endforeach; ?>
-								</ul>
-							<?php endif; ?>
-
-						</div>
-
 					</div>
 
-					<div class="w-full md:w-7/12">
-						<ul class="grid grid-cols-1 gap-5 md:grid-cols-3">
+					<div class="w-full lg:w-7/12">
+						<ul class="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
 								<template x-for="transaction in actualTransactions" :key="transaction.ID">
-									<li class="w-full h-full pl-0 m-0 list-none">
+									<li class="w-full h-full pl-0 m-0 list-none max-w-[320px] mx-auto md:max-w-full md:mx-0">
 											<a
-												class="px-[63px] py-[65px] border border-gray-400 flex flex-col items-center justify-center gap-[37px] h-full"
+												class="px-[63px] py-[65px] border border-[#767676] flex flex-col items-center justify-center gap-[37px] h-full group relative hover:opacity-100"
 												x-bind:href="transaction.link"
-												target="_blank"
+												target="_self"
 												x-bind:aria-label="'Click to go to ' + transaction.title + ' transaction'"
 											>
 												<img
 													:src="transaction.acf.first_company_image.url"
-													class="img-responsive"
+													class="img-responsive max-h-[90px]"
 												/>
-												<span class="text-[18px] leading-[22px] text-center" x-text="transaction.acf.transaction_action_text"></span>
+												<span class="text-[13px] leading-[22px] text-center text-[#767676]" x-text="transaction.acf.transaction_action_text"></span>
 												<img
 													:src="transaction.acf.second_company_image.url"
-													class="img-responsive"
+													class="img-responsive max-h-[90px]"
 												/>
+												<div
+													class="absolute top-0 left-0 flex-col items-center justify-center invisible hidden w-full h-full lg:flex group-hover:visible backdrop-blur-[2px]"
+												>
+													<button
+														class="text-black no-underline bg-white border border-black btn"
+													>
+														Learn More
+													</button>
+												</div>
 											</a>
 										</li>
 								</template>
 						</ul>
 
-						<div class="flex flex-col items-center w-full md:flex-row justify-end pt-[40px] gap-[200px]">
+						<div class="flex flex-col items-center w-full md:flex-row justify-center lg:justify-end pt-[40px] gap-[50px] lg:gap-[200px]">
 							<button
 								class="text-black no-underline border border-black btn-long"
 								@click="loadMore()"
@@ -216,7 +240,10 @@ if ( ! get_field( 'block_preview' ) ) {
 						</div>
 					</div>
 				</div>
+
+				<?php get_template_part( 'partials/blocks/transactions-filter-section/filter', 'mobile', $args );?>
 	</section>
+
 
 	<?php } else { ?>
 		<div data="gutenberg-preview-img">

@@ -121,25 +121,5 @@ class RegisterTaxonomy {
 			),
 		));
 		register_taxonomy_for_object_type( 'sector', 'transaction' );
-
-		register_taxonomy('subsector', array('transaction'), array(
-			'labels'                => array(
-				'name'                       => __( 'Subsector', 'sheacompany' ),
-				'add_new_item'               => __( 'Add New Subsector', 'textdomain' ),
-				'separate_items_with_commas' => __( 'Separate Subsectors with commas', 'sheacompany' ),
-				'choose_from_most_used'      => __( 'Choose from the most used Subsectors', 'sheacompany' ),
-			),
-			'description'           => 'Subsectors are like tags.',
-			'hierarchical'          => false,
-			'show_admin_column'     => true,
-			'show_in_rest' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'rewrite'               => array(
-				'slug' => '/transactions/subsector',
-				'with_front' => false
-			),
-		));
-		register_taxonomy_for_object_type( 'subsector', 'transaction' );
-
 	}
 }

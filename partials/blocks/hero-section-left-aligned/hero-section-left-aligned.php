@@ -14,30 +14,40 @@ $hero_bg 		= get_field('hero_background');
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-[431px] px-[14px] lg:px-[82px]  lg:h-[545px] max-h-full flex flex-col items-start justify-center"
+	<section
+				<?php if( is_page('team') ): ?>
+					class="	w-full min-h-[431px] h-full px-[30px] lg:px-[82px] lg:min-h-[545px] lg:h-[545px] max-h-full flex flex-col items-start justify-center"
+				<?php else: ?>
+					class="	w-full min-h-[431px] h-full px-[30px] lg:px-[82px] lg:min-h-[545px] lg:h-[545px] max-h-full flex flex-col items-start justify-center section fade"
+				<?php endif; ?>
 				id="<?php echo esc_attr( $id ); ?>"
 				style="
 					background: url('<?php echo esc_url($hero_bg['url']) ?>');
 					background-repeat: no-repeat;
 					background-size: cover;
 				">
-				<div
-				<?php if( is_page('sectors') ): ?>
-					class="max-w-[1143px] text-left"
-				<?php else: ?>
-					class="max-w-4xl text-left"
-				<?php endif; ?>
-				>
-					<span class="mb-6 text-lg text-white"><?php echo esc_attr($sub_title); ?></span>
-					<h1
-					<?php if( is_page('team') || is_page('sectors') ): ?>
-						class="text-white hero-leading"
-					<?php else: ?>
-						class="text-white hero-leading max-w-[628px]"
-					<?php endif; ?>
-					><?php echo esc_attr($title); ?></h1>
+				<div class="max-w-[1440px] w-full mx-auto flex flex-col">
+					<div class="mt-32 text-left">
+						<span
+							<?php if( is_page('sectors') ): ?>
+								class="mb-6 text-lg text-white font-normal tracking-[0.15em] fade fade-delay"
+							<?php else: ?>
+								class="mb-6 text-lg text-white font-normal tracking-[0.15em]"
+							<?php endif; ?>
+						>
+							<?php echo esc_attr($sub_title); ?>
+						</span>
+						<h1
+						<?php if( is_page('team') ): ?>
+							class="mb-0 text-white hero-leading"
+						<?php elseif( is_page('sectors') ): ?>
+							class="mb-0 text-white hero-leading fade fade-delay"
+						<?php else: ?>
+							class="text-white hero-leading max-w-[628px] mb-0 fade fade-delay"
+						<?php endif; ?>
+						><?php echo esc_attr($title); ?></h1>
+					</div>
 				</div>
-
 	</section>
 
 	<?php } else { ?>

@@ -12,7 +12,7 @@ $alumni_repeater 		= get_field('alumni_repeater');
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full px-[14px] lg:px-0 pt-[30px] pb-[65px] md:pt-[60px] md:pb-[85px]"
+	<section 	class="w-full h-full px-[30px] lg:px-0 pt-[30px] pb-[65px] md:pt-[60px] md:pb-[85px] section fade"
 				id="<?php echo esc_attr( $id ); ?>"
 				>
 				<div class="lg:mx-auto lg:max-w-[1080px]">

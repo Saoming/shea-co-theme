@@ -13,7 +13,7 @@ $content = get_field('content');
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full px-[14px] py-[40px] xl:px-[0] lg:py-[72px]"
+	<section 	class="w-full h-full px-[30px] py-[40px] xl:px-[0] lg:py-[72px] section fade"
 				id="<?php echo esc_attr( $id ); ?>"
 				>
 				<?php if( have_rows('content')):  ?>
@@ -25,7 +25,7 @@ if ( ! get_field( 'block_preview' ) ) {
 								$text_editor = get_sub_field('text_editor');
 							?>
 
-							<div class="mb-[41px] lg:mb-[60px] text-lg leading-7 lg:leading-9">
+							<div class="mb-[41px] lg:mb-[60px] text-lg leading-7 lg:leading-9 fade fade-delay">
 								<?php echo wp_kses_post($text_editor); ?>
 							</div>
 
@@ -39,16 +39,16 @@ if ( ! get_field( 'block_preview' ) ) {
 
 							<div class="w-full grid grid-cols-1 lg:grid-cols-2 mb-[41px] lg:mb-[60px] gap-10 lg:gap-[128px] justify-center items-center">
 								<div class="order-2 text-center lg:text-left lg:order-1">
-									<span class="hidden mb-3 text-lg font-bold leading-6 uppercase md:block">
+									<span class="hidden mb-3 text-lg font-normal leading-6 uppercase md:block tracking-[0.15em] fade fade-delay">
 										<?php echo esc_attr( $sub_title ); ?>
 									</span>
-									<h3 class="mt-0 mb-0 text-[24px] leading-[40px] lg:text-[36px] font-bold max-w-[412px] lg:leading-[56px]">
+									<h3 class="mt-0 mb-0 text-[24px] leading-[40px] lg:text-[36px] font-bold max-w-[412px] lg:leading-[56px] mx-auto lg:mx-0 fade fade-delay">
 										<?php echo esc_attr( $title ); ?>
 									</h3>
 								</div>
 
-								<div class="order-1 lg:order-2">
-									<?php echo wp_get_attachment_image( $image, 'large', false, array( "class" => "img-responsive" ) ); ?>
+								<div class="order-1 lg:order-2 fade fade-delay">
+									<?php echo wp_get_attachment_image( $image, 'large', false, array( "class" => "img-responsive mt-0" ) ); ?>
 								</div>
 							</div>
 
@@ -61,12 +61,12 @@ if ( ! get_field( 'block_preview' ) ) {
 
 							<div class="w-full grid grid-cols-1 lg:grid-cols-2 mb-[41px] lg:mb-[60px] gap-10 lg:gap-[128px] justify-center items-center">
 
-								<div>
-									<?php echo wp_get_attachment_image( $image, 'large', false, array( "class" => "img-responsive" ) ); ?>
+								<div class="fade fade-delay">
+									<?php echo wp_get_attachment_image( $image, 'large', false, array( "class" => "img-responsive mt-0" ) ); ?>
 								</div>
 
 								<div>
-									<h3 class="mt-0 mb-0 text-[24px] leading-[40px] lg:text-[36px] font-bold max-w-[412px] lg:leading-[56px]">
+									<h3 class="mt-0 mb-0 text-[24px] leading-[40px] lg:text-[36px] font-bold max-w-[412px] lg:leading-[56px] fade fade-delay">
 										<?php echo esc_attr( $title ); ?>
 									</h3>
 								</div>

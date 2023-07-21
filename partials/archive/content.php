@@ -8,7 +8,7 @@
  */
 
  if ( is_tax('subsector') || is_tax('sector') ) {
-	get_template_part( 'partials/archive/taxonomy-sectors/tax', 'view');
+	get_template_part( 'partials/archive/taxonomy-sectors/taxonomy', 'sectors');
  }
 
 

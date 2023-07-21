@@ -12,11 +12,11 @@ $content 		= get_field('content');
 
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-full bg-lightBlue"
+	<section 	class="w-full h-full bg-lightBlue section fade"
 				id="<?php echo esc_attr( $id ); ?>"
 				>
 				<?php if( have_rows('content')):  ?>
-				<div class="flex flex-col">
+				<div class="flex flex-col 2xl:max-w-[1440px] 2xl:mx-auto">
 					<?php while ( have_rows('content') ) : the_row(); ?>
 						<?php if( get_row_layout() == 'full_width_image_left_and_right' ): ?>
 							<?php
@@ -30,9 +30,9 @@ if ( ! get_field( 'block_preview' ) ) {
 							?>
 								<div order-right class="grid grid-cols-1 mb-10 md:grid-cols-2 md:mb-0">
 								<?php else: ?>
-								<div order-left class="grid grid-cols-1 mb-10 md:grid-cols-2 md:mb-0">
+								<div order-left class="grid grid-cols-1 mb-0 md:grid-cols-2">
 							<?php endif; ?>
-									<div class="px-[14px] lg:px-[82px] flex flex-col justify-center items-center lg:items-start">
+									<div class="px-[30px] lg:px-[82px] flex flex-col justify-center items-center lg:items-start">
 									<?php if ( $title_full_width ): ?>
 									<h2 class="lg:mt-0 mb-[40px] text-[24px] leading-[40px] lg:text-[40px] lg:leading-[50px] text-center">
 										<?php echo esc_attr( $title_full_width ); ?>

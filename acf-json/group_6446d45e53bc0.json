@@ -44,8 +44,8 @@
         },
         {
             "key": "field_6446d5a63f303",
-            "label": "Selected Sub Sector",
-            "name": "selected__sub_sector",
+            "label": "Selected Sector",
+            "name": "selected_sector",
             "aria-label": "",
             "type": "taxonomy",
             "instructions": "",
@@ -56,7 +56,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "subsector",
+            "taxonomy": "sector",
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
@@ -104,5 +104,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1682366138
+    "modified": 1685185221
 }

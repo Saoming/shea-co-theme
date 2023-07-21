@@ -31,9 +31,9 @@ $args['menu_footer_two'] = wp_nav_menu(
 
 	)
 );
-
-$args['footer_brand']  = get_field( 'brand', 'option' );
-$args['footer_email_address'] = get_field( 'email_address', 'option' );
+$args['social_link']  		 	= get_field( 'social_link', 'option' );
+$args['footer_brand']  			= get_field( 'brand', 'option' );
+$args['footer_email_address'] 	= get_field( 'email_address', 'option' );
 
 if ( have_rows( 'location_repeaters', 'option' ) ) {
 	$i = 0;

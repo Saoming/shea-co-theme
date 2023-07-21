@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-
 module.exports = {
 	// Only load postcss-editor-styles plugin when we're processing the editor-style.css file.
 	plugins: [

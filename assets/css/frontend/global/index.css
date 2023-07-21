@@ -6,36 +6,37 @@ body {
 	@apply font-ibm;
 }
 
+
 [order-left] div:first-child,
 [gallery-left] div:first-child {
 
-	@apply order-2;
+	@apply order-1 md:order-2;
 }
 
 [order-left] div:nth-child(2),
 [gallery-left] ul {
 
-	@apply order-1;
+	@apply order-2 md:order-1;
 }
 
 [order-right] div:first-child,
 [gallery-right] div:first-child {
 
-	@apply order-2 lg:order-1;
+	@apply order-1 md:order-1;
 }
 
 [order-right] div:first-child {
 
-	@apply md:order-1;
+	@apply order-1 md:order-1;
 }
 
 [order-right] div:nth-child(2),
 [gallery-right] ul {
 
-	@apply order-1 lg:order-2;
+	@apply order-2 md:order-2;
 }
 
 [order-right] div:nth-child(2) {
 
-	@apply md:order-2;
+	@apply order-2 md:order-2;
 }

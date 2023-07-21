@@ -1,5 +1,5 @@
 <section
-	class="w-full h-[431px] px-[14px] lg:px-[82px] lg:h-[545px] max-h-full flex flex-col justify-end"
+	class="w-full h-[431px] px-[30px] lg:px-[82px] lg:h-[545px] max-h-full flex flex-col justify-end"
 	style="
 					background: url('<?php echo esc_url($args['person_hero_image']['url']) ?>');
 					background-repeat: no-repeat;

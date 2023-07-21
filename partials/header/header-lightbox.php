@@ -11,7 +11,7 @@
 <section
 	x-show="modal"
 	id="mobile-navigation"
-	class="fixed top-0 bottom-0 left-0 right-0 z-10 backdrop-blur-sm"
+	class="fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm z-[200]"
 	x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 scale-90"
     x-transition:enter-end="opacity-100 scale-100"

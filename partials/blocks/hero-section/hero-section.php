@@ -9,7 +9,7 @@ if ( ! empty( $block['anchor'] ) ) {
 	$id = $block['anchor'];
 }
 
-$title 			= get_field('title');
+$title 					= get_field('title');
 $cta 					= get_field('button_link');
 if ($cta ){
 	$cta_link           = $cta['url'];
@@ -19,14 +19,14 @@ if ($cta ){
 $hero_bg 		= get_field('hero_background');
 if ( ! get_field( 'block_preview' ) ) {
 	?>
-	<section 	class="w-full h-[431px] px-[45px]  lg:h-[600px] max-h-full flex flex-col items-center justify-center"
+	<section 	class="w-full h-[600px] px-[45px]  lg:h-[600px] max-h-full flex flex-col items-center justify-center section fade"
 				id="<?php echo esc_attr( $id ); ?>"
 				style="
 					background: url('<?php echo esc_url($hero_bg['url']) ?>');
 					background-repeat: no-repeat;
 					background-size: cover;
 				">
-				<div class="max-w-4xl text-center">
+				<div class="max-w-[1440px] text-center 2xl:pl-[150px]">
 					<h1 class="text-white hero-leading"><?php echo esc_attr($title); ?></h1>
 					<?php if($cta): ?>
 						<a
